@@ -271,7 +271,7 @@ export default function Events() {
             </div>
 
             {/* Circular carousel */}
-            <div className="mt-12 sm:mt-16">
+            <div className="relative mt-12 min-h-[420px] w-full sm:mt-16">
               <CircularCarousel
                   items={events.map((event) => ({
                     ...event,
@@ -281,7 +281,7 @@ export default function Events() {
                   }))}
                   onItemClick={(item) => setSelectedEvent(item)}
                   cardWidth={280}
-                  aspectRatio="3 / 4"
+                  aspectRatio={0.75}
                   gap={24}
                   autoplay={false}
                   draggable
