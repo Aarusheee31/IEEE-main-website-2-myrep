@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import CrystalizedBall from './CrystalizedBall';
 import GhostCursor from './GhostCursor';
+import StarBorder from './StarBorder';
 
 export default function Hero() {
   return (
@@ -50,16 +51,17 @@ export default function Hero() {
 
         {/* Ghost Cursor Effect */}
         <GhostCursor
-            color="#E4D076"
-            brightness={1.15}
-            size={90}
-            trailLength={55}
-            inertia={0.45}
-            turbulence={0.55}
-            drift={0.2}
-            detail={0.85}
-            bloomStrength={0.7}
-            bloomRadius={1.2}
+            color="#8B9091"
+            brightness={0.55}
+            size={70}
+            trailLength={35}
+            inertia={0.5}
+            turbulence={0.35}
+            drift={0.12}
+            detail={0.65}
+            grainIntensity={0.02}
+            bloomStrength={0.2}
+            bloomRadius={0.7}
             theme="dark"
             zIndex={5}
             intro={false}
@@ -145,38 +147,60 @@ export default function Hero() {
           {/* Call-to-action buttons */}
           <div className="relative z-20 mt-9 flex flex-wrap items-center gap-4">
             {/* Primary CTA */}
-            <a
+            <StarBorder
+                as="a"
                 href="#events"
-                className="group inline-flex min-h-[60px] items-center gap-5 rounded-full px-7 text-sm font-bold tracking-wide shadow-lg transition duration-300 hover:-translate-y-1"
-                style={{
-                  backgroundColor: 'var(--accent)',
-                  color: 'var(--accent-text)',
-                  boxShadow: '0 8px 28px var(--glow)',
-                }}
+                theme="dark"
+                color="#8B9091"
+                trailColor="#476998"
+                backgroundColor="#043473"
+                textColor="#D7D6AE"
+                borderColor="rgba(139, 144, 145, 0.35)"
+                duration={5}
+                thickness={1}
+                radius={999}
+                trailLength={0.22}
+                stars={1}
+                glow={0.25}
+                sparkle={false}
+                hover="lap"
+                clickPulse
+                className="group min-h-[60px] gap-5 px-7 text-sm font-bold tracking-wide shadow-lg transition duration-300 hover:-translate-y-1"
             >
               EXPLORE EVENTS
 
               <span className="text-xl transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-              ↗
-            </span>
-            </a>
+    ↗
+  </span>
+            </StarBorder>
 
             {/* Secondary CTA */}
-            <a
+            <StarBorder
+                as="a"
                 href="#about"
-                className="group inline-flex min-h-[60px] items-center gap-5 rounded-full border px-7 text-sm font-bold tracking-wide transition duration-300 hover:-translate-y-1"
-                style={{
-                  borderColor: 'var(--border)',
-                  backgroundColor: 'var(--surface)',
-                  color: 'var(--fg)',
-                }}
+                theme="light"
+                color="#476998"
+                trailColor="#8B9091"
+                backgroundColor="#D7D6AE"
+                textColor="#043473"
+                borderColor="rgba(71, 105, 152, 0.35)"
+                duration={5}
+                thickness={1}
+                radius={999}
+                trailLength={0.22}
+                stars={1}
+                glow={0.2}
+                sparkle={false}
+                hover="lap"
+                clickPulse
+                className="group min-h-[60px] gap-5 px-7 text-sm font-bold tracking-wide transition duration-300 hover:-translate-y-1"
             >
               OUR STORY
 
               <span className="text-lg transition-transform duration-300 group-hover:translate-y-1">
-              ↓
-            </span>
-            </a>
+    ↓
+  </span>
+            </StarBorder>
           </div>
 
           {/* Brand statement */}

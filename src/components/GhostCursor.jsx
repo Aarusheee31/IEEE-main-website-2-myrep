@@ -369,7 +369,7 @@ const link = (gl, fragmentSource) => {
 };
 
 const GhostCursor = ({
-                         color = '#E4D076',
+                         color = '#8B9091',
                          brightness = 1.15,
                          size = 90,
                          trailLength = 55,
