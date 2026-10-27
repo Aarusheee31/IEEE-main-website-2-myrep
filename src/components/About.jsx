@@ -22,11 +22,20 @@ export default function About() {
 
           {/* Left: Heading */}
           <div className="lg:col-span-8">
-            <h2>
-              Technology is
-              <span>better</span>
-              <span>together.</span>
-            </h2>
+            <ScrollFloat
+                containerClassName="technology-heading"
+                textClassName="technology-heading-text"
+                effect="float"
+                splitBy="chars"
+                direction="up"
+                stagger={0.025}
+                distance={80}
+                animationDuration={1}
+                scrollStart="top 85%"
+                scrollEnd="top 35%"
+            >
+              Technology is better together.
+            </ScrollFloat>
           </div>
 
           {/* Right: Description */}
