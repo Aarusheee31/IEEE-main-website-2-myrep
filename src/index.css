@@ -1,70 +1,72 @@
 @import "tailwindcss";
 
-/* Tailwind dark: utilities follow .dark on <html> */
+/* Enable Tailwind dark utilities using the .dark class */
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ========================================
-   LIGHT MODE
+   IEEE IGDTUW BRAND COLOURS
 ======================================== */
 
 :root {
     color-scheme: light;
 
-    /* Backgrounds */
-    --bg: #F8F6F0;
-    --bg-alt: #EEE9F3;
-    --surface: #FFFFFF;
-    --surface-hover: #F1ECF5;
+    /* Brand palette */
+    --brand-black: #24201A;
+    --brand-plum: #3F2548;
+    --brand-blue: #35369C;
+    --brand-lavender: #7C679E;
+    --brand-yellow: #C8C793;
 
-    /* Text */
-    --fg: #302B33;
-    --fg-muted: #625968;
+    /* Light theme */
+    --bg: #F8F7F2;
+    --bg-alt: #EFEDF3;
+    --surface: #FFFFFF;
+    --surface-hover: #F2EFF6;
+
+    --fg: #24201A;
+    --fg-muted: #625D63;
     --heading: #3F2548;
 
-    /* Brand colours */
     --accent: #35369C;
-    --accent-hover: #2D2E83;
+    --accent-hover: #292A7D;
     --accent-text: #35369C;
 
     --secondary: #7C679E;
-    --ink: #3F2548;
+    --ink: #24201A;
     --highlight: #C8C793;
 
-    /* UI */
-    --border: #DDD4E5;
-    --card-shadow: 0 4px 20px rgba(63, 37, 72, 0.08);
+    --border: rgba(63, 37, 72, 0.16);
+    --card-shadow: 0 8px 30px rgba(36, 32, 26, 0.07);
+    --glow: rgba(53, 54, 156, 0.12);
 }
 
 /* ========================================
-   DARK MODE
+   DARK THEME
 ======================================== */
 
 .dark {
     color-scheme: dark;
 
-    /* Backgrounds */
     --bg: #24201A;
-    --bg-alt: #302535;
-    --surface: #3F2548;
-    --surface-hover: #493052;
+    --bg-alt: #2D272D;
+    --surface: #332A35;
+    --surface-hover: #403044;
 
-    /* Text */
-    --fg: #F4F0F5;
-    --fg-muted: #D0C6D5;
+    --fg: #F5F2E9;
+    --fg-muted: #C9C1CB;
     --heading: #C8C793;
 
-    /* Brand colours */
     --accent: #35369C;
-    --accent-hover: #4547B5;
+    --accent-hover: #4849B5;
     --accent-text: #C8C793;
 
     --secondary: #7C679E;
-    --ink: #F4F0F5;
+    --ink: #F5F2E9;
     --highlight: #C8C793;
 
-    /* UI */
-    --border: #59445F;
-    --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    --border: rgba(200, 199, 147, 0.20);
+    --card-shadow: 0 10px 35px rgba(0, 0, 0, 0.20);
+    --glow: rgba(124, 103, 158, 0.18);
 }
 
 /* ========================================
@@ -88,12 +90,13 @@
     --color-secondary: var(--secondary);
     --color-ink: var(--ink);
     --color-highlight: var(--highlight);
-
     --color-border: var(--border);
+
+    --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
 }
 
 /* ========================================
-   GLOBAL STYLES
+   GLOBAL RESET
 ======================================== */
 
 * {
@@ -103,23 +106,36 @@
 html {
     min-height: 100%;
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
     margin: 0;
+    min-width: 320px;
     min-height: 100vh;
 
     background-color: var(--bg);
     color: var(--fg);
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
     transition:
-            background-color 0.25s ease,
-            color 0.25s ease;
+            background-color 0.3s ease,
+            color 0.3s ease;
 }
 
-/* Headings */
+#root {
+    min-height: 100vh;
+}
+
+/* ========================================
+   TYPOGRAPHY
+======================================== */
 
 h1,
 h2,
@@ -128,45 +144,83 @@ h4,
 h5,
 h6 {
     color: var(--heading);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    text-wrap: balance;
 }
-
-/* Paragraphs */
 
 p {
     color: var(--fg-muted);
 }
 
-/* Links */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+}
+
+img {
+    display: block;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* ========================================
+   LINKS
+======================================== */
 
 a {
     color: var(--accent);
-    transition: color 0.2s ease;
+    text-decoration: none;
+    transition:
+            color 0.25s ease,
+            opacity 0.25s ease;
 }
 
 a:hover {
-    color: var(--accent-hover);
+    color: var(--secondary);
 }
 
-/* Buttons */
-
-button {
-    transition:
-            background-color 0.2s ease,
-            color 0.2s ease,
-            border-color 0.2s ease;
-}
-
-/* Cards */
+/* ========================================
+   REUSABLE CARD STYLE
+======================================== */
 
 .card {
     background-color: var(--surface);
     color: var(--fg);
     border: 1px solid var(--border);
+    border-radius: 16px;
     box-shadow: var(--card-shadow);
-    border-radius: 12px;
+
+    transition:
+            background-color 0.3s ease,
+            border-color 0.3s ease,
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
 }
 
-/* Form fields */
+.card:hover {
+    border-color: var(--secondary);
+    box-shadow: 0 12px 35px var(--glow);
+}
+
+/* ========================================
+   FORM ELEMENTS
+======================================== */
 
 input,
 textarea,
@@ -174,6 +228,7 @@ select {
     background-color: var(--surface);
     color: var(--fg);
     border: 1px solid var(--border);
+    border-radius: 8px;
 }
 
 input::placeholder,
@@ -181,20 +236,46 @@ textarea::placeholder {
     color: var(--fg-muted);
 }
 
-/* Selection */
+/* ========================================
+   TEXT SELECTION
+======================================== */
 
 ::selection {
-    background-color: var(--secondary);
+    background-color: var(--brand-lavender);
     color: #FFFFFF;
 }
 
-/* Focus accessibility */
+/* ========================================
+   ACCESSIBILITY
+======================================== */
 
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-    outline: 2px solid var(--secondary);
-    outline-offset: 3px;
+:focus-visible {
+    outline: 2px solid var(--brand-lavender);
+    outline-offset: 4px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
+   MOBILE BASELINE
+======================================== */
+
+@media (max-width: 640px) {
+    html {
+        scroll-padding-top: 72px;
+    }
+
+    body {
+        font-size: 15px;
+    }
 }
