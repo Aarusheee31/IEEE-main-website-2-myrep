@@ -8,7 +8,7 @@ export default function Preloader() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setVisible(false);
-        }, 2200);
+        }, 1200);
 
         return () => clearTimeout(timer);
     }, []);
@@ -28,7 +28,9 @@ export default function Preloader() {
                 repeat={2}
             />
 
-            <div className="preloader-center">IEEE</div>
+            <div className="preloader-center">
+                <img src="/ieee-logo.png" alt="IEEE Logo" />
+            </div>
         </div>
     );
 }

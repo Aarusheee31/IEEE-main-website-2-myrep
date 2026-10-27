@@ -20,6 +20,17 @@
     font-weight: 800;
     letter-spacing: 3px;
     pointer-events: none;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.preloader-center img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
 }
 
 @keyframes preloaderFadeIn {
