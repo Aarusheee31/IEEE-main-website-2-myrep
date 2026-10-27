@@ -1,5 +1,6 @@
 import Navbar from './Navbar';
 import CrystalizedBall from './CrystalizedBall';
+import GhostCursor from './GhostCursor';
 
 export default function Hero() {
   return (
@@ -46,6 +47,23 @@ export default function Hero() {
 
         {/* Navbar */}
         <Navbar />
+
+        {/* Ghost Cursor Effect */}
+        <GhostCursor
+            color="#E4D076"
+            brightness={1.15}
+            size={90}
+            trailLength={55}
+            inertia={0.45}
+            turbulence={0.55}
+            drift={0.2}
+            detail={0.85}
+            bloomStrength={0.7}
+            bloomRadius={1.2}
+            theme="dark"
+            zIndex={5}
+            intro={false}
+        />
 
         {/* Crystalized Ball */}
         <div
