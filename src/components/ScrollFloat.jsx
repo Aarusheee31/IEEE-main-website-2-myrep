@@ -11,7 +11,7 @@ const smoothstep = (edge0, edge1, x) => {
     return t * t * (3 - 2 * t);
 };
 
-const ScrollExpand = ({
+const ScrollFloat = ({
                           src = '',
                           mediaType = 'image',
                           poster = '',
@@ -237,4 +237,4 @@ const ScrollExpand = ({
     );
 };
 
-export default ScrollExpand;
+export default ScrollFloat;
