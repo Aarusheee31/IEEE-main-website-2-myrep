@@ -3,15 +3,13 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - main # Triggers workflow on push to main branch
+      - main
 
-# Grant permissions required for GitHub Pages deployment
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, canceling in-progress runs
 concurrency:
   group: 'pages'
   cancel-in-progress: true
@@ -30,7 +28,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Install Dependencies
@@ -45,7 +43,7 @@ jobs:
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Vite outputs build files to 'dist' folder
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
