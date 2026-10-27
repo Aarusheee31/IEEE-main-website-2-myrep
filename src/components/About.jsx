@@ -1,5 +1,5 @@
-// import ScrollFloat from './ScrollFloat';
 
+import ScrollFloat from './ScrollFloat';
 const stats = [
   { value: '200', suffix: '+', label: 'ACTIVE MEMBERS' },
   { value: '20', suffix: '', label: 'YEARS OF MAKING' },
@@ -23,16 +23,20 @@ export default function About() {
           {/* Left: Heading */}
           <div className="lg:col-span-8">
             <ScrollFloat
-                containerClassName="technology-heading"
-                textClassName="technology-heading-text"
                 effect="float"
                 splitBy="chars"
                 direction="up"
-                stagger={0.025}
-                distance={80}
+                order="start"
+                fromColor="currentColor"
                 animationDuration={1}
-                scrollStart="top 85%"
-                scrollEnd="top 35%"
+                ease="back.inOut(2)"
+                scrollStart="center bottom+=50%"
+                scrollEnd="bottom bottom-=40%"
+                stagger={0.03}
+                distance={120}
+                stretch={2.3}
+                smoothing={0}
+                textClassName="technology-heading-text"
             >
               Technology is better together.
             </ScrollFloat>
