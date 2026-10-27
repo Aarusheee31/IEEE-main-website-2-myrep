@@ -1,3 +1,4 @@
+import ScrollFloat from './ScrollFloat';
 
 const stats = [
   { value: '200', suffix: '+', label: 'ACTIVE MEMBERS' },
@@ -21,11 +22,13 @@ export default function About() {
 
           {/* Left: Heading */}
           <div className="lg:col-span-8">
-            <h2 className="text-[clamp(3.5rem,8vw,8rem)] font-bold leading-[0.88] tracking-[-0.065em]">
-              Technology is
-              <span className="block 	text-accent-text">better</span>
-              <span className="block 	text-accent-text">together.</span>
-            </h2>
+            <ScrollFloat>
+              <h2 className="YOUR_EXISTING_CLASSES">
+                Technology is
+                <span>better</span>
+                <span>together.</span>
+              </h2>
+            </ScrollFloat>
           </div>
 
           {/* Right: Description */}
