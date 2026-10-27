@@ -29,7 +29,7 @@ export default function Preloader() {
             />
 
             <div className="preloader-center">
-                <img src="/ieee-logo.png" alt="IEEE Logo" />
+                <img src={`${import.meta.env.BASE_URL}ieee-logo.png`} alt="IEEE Logo" />
             </div>
         </div>
     );
