@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* makes dark: utilities follow a .dark class on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {                       /* LIGHT */
+    --bg:           #F4F3EA;
+    --bg-alt:       #E8E6D6;
+    --surface:      #FBFAF5;
+    --fg:           #2E3F28;    /* your forest green */
+    --accent:       #93A052;    /* your olive */
+    --accent-hover: #84914A;
+    --accent-text:  #66742F;    /* darker olive, readable as text on cream */
+    --secondary:    #806172;    /* your mauve */
+    --ink:          #372C41;    /* your plum */
+}
+
+.dark {                       /* DARK */
+    --bg:           #372C41;
+    --bg-alt:       #2E3F28;
+    --surface:      #2E3F28;
+    --fg:           #F1EFE4;
+    --accent:       #93A052;
+    --accent-hover: #A5B365;
+    --accent-text:  #A8B665;
+    --secondary:    #806172;
+    --ink:          #372C41;
+}
+
+@theme inline {
+    --color-bg: var(--bg);
+    --color-bg-alt: var(--bg-alt);
+    --color-surface: var(--surface);
+    --color-fg: var(--fg);
+    --color-accent: var(--accent);
+    --color-accent-hover: var(--accent-hover);
+    --color-accent-text: var(--accent-text);
+    --color-secondary: var(--secondary);
+    --color-ink: var(--ink);
+}
+
+body { background: var(--bg); color: var(--fg); }
