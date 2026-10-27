@@ -5,10 +5,12 @@ import Chapters from './components/Chapters';
 import People from './components/People';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
     return (
         <>
+            <ThemeProvider>
             <Preloader />
 
             <main>
@@ -19,6 +21,7 @@ function App() {
                 <People />
                 <Footer />
             </main>
+            </ThemeProvider>
         </>
     );
 }

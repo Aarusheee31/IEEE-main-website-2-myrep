@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate min-h-screen overflow-hidden bg-[#171717] text-[#f7f4ec]"
+      className="relative isolate min-h-screen overflow-hidden bg-bg text-fg"
     >
       {/* Background image */}
       <div
