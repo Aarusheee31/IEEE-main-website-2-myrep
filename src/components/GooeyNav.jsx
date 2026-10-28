@@ -8,36 +8,34 @@ const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : us
 
 const THEMES = {
     dark: {
-        '--gn-frame': 'rgba(36, 32, 26, 0.96)',
-        '--gn-frame-edge': 'rgba(124, 103, 158, 0.45)',
-        '--gn-frame-highlight': 'rgba(200, 199, 147, 0.12)',
-        '--gn-frame-shadow':
-            '0 12px 32px -16px rgba(0, 0, 0, 0.7)',
-        '--gn-ink': '#C8C793',
-        '--gn-muted': 'rgba(244, 241, 232, 0.78)',
+        '--gn-frame': 'rgba(4, 52, 115, 0.94)',
+        '--gn-frame-edge': 'rgba(178, 179, 157, 0.45)',
+        '--gn-frame-highlight': 'rgba(215, 214, 174, 0.12)',
+        '--gn-frame-shadow': '0 12px 32px -16px rgba(0, 0, 0, 0.45)',
+        '--gn-ink': '#D7D6AE',
+        '--gn-muted': 'rgba(215, 214, 174, 0.78)',
     },
 
     light: {
-        '--gn-frame': 'rgba(244, 241, 232, 0.96)',
-        '--gn-frame-edge': 'rgba(63, 37, 72, 0.2)',
-        '--gn-frame-highlight': 'rgba(255, 255, 255, 0.8)',
-        '--gn-frame-shadow':
-            '0 12px 32px -16px rgba(36, 32, 26, 0.22)',
-        '--gn-ink': '#24201A',
-        '--gn-muted': 'rgba(63, 37, 72, 0.8)',
+        '--gn-frame': 'rgba(215, 214, 174, 0.96)',
+        '--gn-frame-edge': 'rgba(4, 52, 115, 0.24)',
+        '--gn-frame-highlight': 'rgba(255, 255, 255, 0.55)',
+        '--gn-frame-shadow': '0 12px 32px -16px rgba(4, 52, 115, 0.18)',
+        '--gn-ink': '#043473',
+        '--gn-muted': 'rgba(40, 81, 138, 0.82)',
     },
 };
 
 const PILLS = {
     dark: {
-        color: '#35369C',
-        hover: 'rgba(124, 103, 158, 0.24)',
+        color: '#043473',
+        hover: 'rgba(71, 105, 152, 0.24)',
         shadow: 0.4,
     },
 
     light: {
-        color: '#35369C',
-        hover: 'rgba(124, 103, 158, 0.18)',
+        color: '#D7D6AE',
+        hover: 'rgba(71, 105, 152, 0.18)',
         shadow: 0.2,
     },
 };
