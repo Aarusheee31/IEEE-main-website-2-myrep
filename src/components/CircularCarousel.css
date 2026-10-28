@@ -1,5 +1,5 @@
 .circular-carousel {
-    --cc-fade: #000000;
+    --cc-fade: #101923;;
     --cc-radius: 12px;
     --cc-inner: 0.4;
 
@@ -95,6 +95,7 @@
 }
 
 .circular-carousel__frame {
+    background: #101923;
     position: absolute;
     left: 0;
     top: 0;
@@ -124,7 +125,11 @@
 }
 
 .circular-carousel__shade {
-    background: var(--cc-fade);
+    background: linear-gradient(
+            to bottom,
+            rgba(4, 52, 115, 0.02),
+            rgba(16, 25, 35, 0.24)
+    );
     opacity: var(--cc-depth, 0);
 }
 
