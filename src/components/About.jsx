@@ -36,7 +36,7 @@ export default function About() {
             introDuration={1.8}
             className="micro-slats-layer"
         />
-      <div className="mx-auto max-w-[1800px] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-28">
+        <div className="relative z-10 mx-auto max-w-[1800px] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-28">
 
         {/* Top divider */}
         <div className="mb-16 h-px w-full bg-white/20 sm:mb-20" />

@@ -52,7 +52,7 @@ export default function Footer() {
         {/* Decorative circle */}
         <div className="pointer-events-none absolute -right-32 -top-72 h-[450px] w-[450px] rounded-full border border-white/25 sm:-right-24 sm:-top-80 sm:h-[600px] sm:w-[600px]" />
 
-        <div className="relative mx-auto max-w-[1800px] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+        <div className="relative z-10 mx-auto max-w-[1800px] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
 
           {/* Top label */}
           <div className="flex items-center justify-between border-b border-white/35 pb-8">
