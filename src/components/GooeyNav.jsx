@@ -388,10 +388,23 @@ const GooeyNav = ({
 
         const shape = (index, amount) => {
             const rect = rects[index];
+
             if (!rect || amount <= 0.002) return null;
-            const h = rect.h * Math.min(1.08, 0.42 + 0.58 * Math.sqrt(Math.max(0, amount)));
-            const w = Math.max(h, rect.w * Math.max(0, amount) ** 0.75);
-            return { x: rect.x + rect.w / 2 - w / 2, y: rect.y + rect.h / 2 - h / 2, w, h };
+
+            const scale = Math.min(
+                1,
+                0.42 + 0.58 * Math.sqrt(Math.max(0, amount))
+            );
+
+            const h = rect.h * scale;
+            const w = rect.w * Math.max(0, amount) ** 0.75;
+
+            return {
+                x: rect.x + (rect.w - w) / 2,
+                y: rect.y + (rect.h - h) / 2,
+                w,
+                h
+            };
         };
 
         const plan = (drop, index, now, fresh) => {
