@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import CircularCarousel from './CircularCarousel'
 
-// Works with Vite's configured base path on GitHub Pages.
+// Supports the base path configured in vite.config.js for GitHub Pages.
 const eventImage = (filename) =>
   `${import.meta.env.BASE_URL}Events/Images/${filename}`
 
@@ -194,7 +194,9 @@ function EventModal({ event, onClose }) {
                   src={image}
                   alt={`${event.title} — photo ${index + 1}`}
                   className={`w-full object-cover transition duration-500 hover:scale-105 ${
-  event.images.length === 1 ? 'max-h-[420px]' : 'h-48 sm:h-44'
+  event.images.length === 1
+      ? 'max-h-[420px]'
+      : 'h-48 sm:h-44'
 }`}
                   loading="lazy"
                 />
@@ -257,7 +259,9 @@ export default function Events() {
             <div className="lg:col-span-6">
               <h2 className="text-[clamp(3.5rem,8vw,7.5rem)] font-bold leading-[0.88] tracking-[-0.07em]">
                 Moments
-                <span className="block text-[#476998]">that matter.</span>
+                <span className="block text-[#476998]">
+                  that matter.
+                </span>
               </h2>
             </div>
 
@@ -274,7 +278,13 @@ export default function Events() {
             <CircularCarousel
               items={events.map((event) => ({
                 ...event,
-                src: event.images[0],
+
+                // Use the third image as the thumbnail for Events 1 and 2.
+                src:
+                  event.id === 1 || event.id === 2
+                    ? event.images[2]
+                    : event.images[0],
+
                 alt: event.title,
                 subtitle: event.subtitle,
               }))}
