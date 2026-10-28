@@ -19,55 +19,56 @@ export default function Navbar() {
   const isDark = theme === 'dark';
 
   const colors = {
-    logoBackground: '#043473',
-    logoText: '#D7D6AE',
     accent: '#476998',
-    activeBackground: isDark ? '#043473' : '#D7D6AE',
-    activeText: isDark ? '#D7D6AE' : '#043473',
     hoverColors: ['#476998', '#28518A', '#043473'],
   };
 
   return (
     <header
-      className="absolute inset-x-0 top-0 z-50 border-b transition-colors duration-300"
+      className="ieee-navbar fixed inset-x-0 top-0 z-[100] border-b transition-colors duration-300"
       style={{
-        backgroundColor: 'var(--bg)',
-        borderColor: 'var(--border)',
+        backgroundColor: isDark
+          ? 'rgba(4, 52, 115, 0.78)'
+          : 'rgba(215, 214, 174, 0.82)',
+        borderColor: isDark
+          ? 'rgba(215, 214, 174, 0.20)'
+          : 'rgba(4, 52, 115, 0.18)',
+        backdropFilter: 'blur(18px) saturate(140%)',
+        WebkitBackdropFilter: 'blur(18px) saturate(140%)',
+        color: 'var(--fg)',
       }}
     >
-      <nav className="mx-auto flex min-h-[88px] max-w-[1800px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-12">
-
-        {/* IEEE Branding */}
+      <nav
+        className="
+          mx-auto grid min-h-[76px] max-w-[1800px]
+          grid-cols-[1fr_auto_1fr] items-center gap-4
+          px-5 sm:px-8 lg:min-h-[88px] lg:px-12
+        "
+      >
+        {/* LEFT: IEEE Logo */}
         <a
           href="#home"
-          className="flex shrink-0 items-center gap-3"
+          className="flex min-w-0 items-center justify-self-start"
           aria-label="IEEE IGDTUW Home"
+          onClick={() => setMenuOpen(false)}
         >
-          {/* Actual IEEE Logo */}
           <img
-            src={`${import.meta.env.BASE_URL}ieee-logo.png`}
+            src={`${import.meta.env.BASE_URL}${
+  isDark ? 'ieee-logo-dark.png' : 'ieee-logo.png'
+}`}
             alt="IEEE Logo"
-            className="h-12 w-auto shrink-0 object-contain sm:h-14"
+            className="h-10 w-auto shrink-0 object-contain transition-opacity duration-300 sm:h-12"
           />
-
-          {/* Chapter Name */}
-          <span
-            className="text-xl font-bold tracking-tight transition-colors duration-300 sm:text-2xl"
-            style={{ color: 'var(--fg)' }}
-          >
-            IGDTUW
-            <span style={{ color: colors.accent }}>.</span>
-          </span>
         </a>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:block">
+        {/* CENTER: Desktop Navigation */}
+        <div className="hidden justify-self-center md:block">
           <GooeyNav
             items={navLinks}
             initialActiveIndex={0}
             theme={theme}
-            color={colors.activeBackground}
-            activeTextColor={colors.activeText}
+            color={isDark ? '#043473' : '#D7D6AE'}
+            activeTextColor={isDark ? '#D7D6AE' : '#043473'}
             colors={colors.hoverColors}
             size="md"
             frame
@@ -82,23 +83,34 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Right Side Controls */}
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        {/* RIGHT: Theme Toggle and Mobile Menu */}
+        <div className="flex items-center justify-self-end gap-2 sm:gap-3">
 
           {/* Theme Toggle */}
           <button
             type="button"
             onClick={toggle}
             aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-            className="flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold transition-all duration-300 hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:px-4"
+            className="
+              inline-flex items-center justify-center gap-2
+              rounded-full border px-3 py-2
+              text-xs font-semibold tracking-wide
+              transition-all duration-300
+              hover:opacity-85
+              focus-visible:outline focus-visible:outline-2
+              focus-visible:outline-offset-2
+              sm:px-4 sm:py-2.5
+            "
             style={{
               color: 'var(--fg)',
               borderColor: 'var(--border)',
-              backgroundColor: 'var(--surface)',
+              backgroundColor: isDark
+                ? 'rgba(71, 105, 152, 0.42)'
+                : 'rgba(255, 255, 255, 0.28)',
               outlineColor: colors.accent,
             }}
           >
-            <span className="text-lg" aria-hidden="true">
+            <span aria-hidden="true" className="text-base sm:text-lg">
               {isDark ? '☀️' : '🌙'}
             </span>
 
@@ -111,13 +123,25 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}
-            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-label={
+              menuOpen ? 'Close navigation menu' : 'Open navigation menu'
+            }
             aria-expanded={menuOpen}
-            className="rounded-md border px-3 py-2 text-sm font-semibold transition-all duration-300 hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
+            className="
+              rounded-lg border px-3 py-2
+              text-xs font-semibold tracking-wide
+              transition-all duration-300
+              hover:opacity-80
+              focus-visible:outline focus-visible:outline-2
+              focus-visible:outline-offset-2
+              md:hidden
+            "
             style={{
               color: 'var(--fg)',
               borderColor: 'var(--border)',
-              backgroundColor: 'var(--surface)',
+              backgroundColor: isDark
+                ? 'rgba(71, 105, 152, 0.35)'
+                : 'rgba(255, 255, 255, 0.25)',
               outlineColor: colors.accent,
             }}
           >
@@ -129,33 +153,46 @@ export default function Navbar() {
       {/* Mobile Navigation */}
       {menuOpen && (
         <div
-          className="border-t p-5 shadow-lg md:hidden"
+          className="border-t px-5 py-4 shadow-lg md:hidden"
           style={{
-            backgroundColor: 'var(--surface)',
-            borderColor: 'var(--border)',
+            backgroundColor: isDark
+              ? 'rgba(4, 52, 115, 0.96)'
+              : 'rgba(215, 214, 174, 0.97)',
+            borderColor: isDark
+              ? 'rgba(215, 214, 174, 0.20)'
+              : 'rgba(4, 52, 115, 0.18)',
+            backdropFilter: 'blur(18px)',
+            WebkitBackdropFilter: 'blur(18px)',
           }}
         >
           <div className="flex flex-col gap-1">
-            {navLinks.map((link, index) => {
-              const isFirstLink = index === 0;
-
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="rounded-md px-3 py-3 text-sm font-semibold tracking-wide transition-all duration-200 hover:translate-x-1"
-                  style={{
-                    color: 'var(--fg)',
-                    borderLeft: `3px solid ${
-    isFirstLink ? colors.accent : 'transparent'
+            {navLinks.map((link, index) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="
+                  rounded-lg px-4 py-3
+                  text-sm font-semibold tracking-wide
+                  transition-all duration-200
+                  hover:translate-x-1
+                "
+                style={{
+                  color: 'var(--fg)',
+                  borderLeft: `3px solid ${
+  index === 0 ? colors.accent : 'transparent'
 }`,
-                  }}
-                >
-                  {link.label}
-                </a>
-              );
-            })}
+                  backgroundColor:
+                    index === 0
+                      ? isDark
+                        ? 'rgba(71, 105, 152, 0.25)'
+                        : 'rgba(71, 105, 152, 0.12)'
+                      : 'transparent',
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
       )}

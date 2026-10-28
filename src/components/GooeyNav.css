@@ -195,3 +195,21 @@
         white-space: normal;
     }
 }
+
+/* Keep navigation links aligned in one row on desktop */
+.ieee-gooey-nav .gooey-nav__list {
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+/* Prevent the navigation from becoming wider than its content */
+.ieee-gooey-nav {
+    width: max-content;
+    max-width: 100%;
+}
+
+/* Keep links vertically aligned */
+.ieee-gooey-nav .gooey-nav__item {
+    align-items: center;
+    flex-shrink: 0;
+}
