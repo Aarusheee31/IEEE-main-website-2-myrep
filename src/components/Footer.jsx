@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import MicroSlats from './MicroSlats';
 
 export default function Footer() {
   const [email, setEmail] = useState('')
@@ -22,13 +23,36 @@ export default function Footer() {
     <>
       {/* JOIN / SUBSCRIBE SECTION */}
       <section
-        id="join"
-        className="relative overflow-hidden bg-accent text-[#f8f5ec]"
+          id="join"
+          className="relative isolate overflow-hidden bg-accent text-[#f8f5ec]"
       >
+        <MicroSlats
+            preset="tide"
+            color="#B2B39D"
+            glintColor="#D7D6AE"
+            backgroundColor="#476998"
+            slatWidth={14}
+            slatHeight={30}
+            gap={4}
+            roundness={0.7}
+            speed={0.18}
+            scale={1.3}
+            direction={250}
+            chop={0.18}
+            stretch={0.08}
+            glint={0.15}
+            contrast={0.8}
+            perspective={0.4}
+            fog={0.85}
+            interactive={false}
+            intro
+            introDuration={1.8}
+            className="micro-slats-layer"
+        />
         {/* Decorative circle */}
         <div className="pointer-events-none absolute -right-32 -top-72 h-[450px] w-[450px] rounded-full border border-white/25 sm:-right-24 sm:-top-80 sm:h-[600px] sm:w-[600px]" />
 
-        <div className="relative mx-auto max-w-[1800px] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+        <div className="relative z-10 mx-auto max-w-[1800px] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
 
           {/* Top label */}
           <div className="flex items-center justify-between border-b border-white/35 pb-8">
