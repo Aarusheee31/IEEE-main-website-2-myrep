@@ -202,14 +202,37 @@
     align-items: center;
 }
 
-/* Prevent the navigation from becoming wider than its content */
+/* IEEE desktop navigation alignment */
 .ieee-gooey-nav {
+    display: inline-flex;
+    width: max-content;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.ieee-gooey-nav .gooey-nav__stage {
+    display: block;
     width: max-content;
     max-width: 100%;
 }
 
-/* Keep links vertically aligned */
-.ieee-gooey-nav .gooey-nav__item {
+.ieee-gooey-nav .gooey-nav__list {
+    display: flex;
+    flex-wrap: nowrap;
     align-items: center;
-    flex-shrink: 0;
+    justify-content: center;
+    gap: 4px;
+}
+
+.ieee-gooey-nav .gooey-nav__item {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+}
+
+.ieee-gooey-nav .gooey-nav__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
 }
