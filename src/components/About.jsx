@@ -91,12 +91,7 @@ export default function About() {
           {/* Image */}
           <div className="lg:col-span-4">
             <div className="h-52 overflow-hidden sm:h-64 lg:h-[194px]">
-              <img
-                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85"
-                alt="Students collaborating around technology"
-                className="h-full w-full object-cover grayscale-[20%] transition duration-700 hover:scale-105"
-                loading="lazy"
-              />
+
             </div>
           </div>
         </div>
