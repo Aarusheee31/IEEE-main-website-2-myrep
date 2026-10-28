@@ -21,20 +21,17 @@ export default function Navbar() {
   const accent = '#476998';
 
   return (
-    <header
-      className="ieee-navbar fixed inset-x-0 top-0 z-[100] border-b"
-      style={{
-        backgroundColor: isDark
-          ? 'rgba(4, 52, 115, 0.24)'
-          : 'rgba(215, 214, 174, 0.24)',
-        borderColor: isDark
-          ? 'rgba(215, 214, 174, 0.16)'
-          : 'rgba(4, 52, 115, 0.14)',
-        backdropFilter: 'blur(22px) saturate(135%)',
-        WebkitBackdropFilter: 'blur(22px) saturate(135%)',
-        color: 'var(--fg)',
-      }}
-    >
+      <header
+          className="ieee-navbar fixed inset-x-0 top-0 z-[100]"
+          style={{
+            backgroundColor: 'transparent',
+            borderBottom: 'none',
+            boxShadow: 'none',
+            backdropFilter: 'blur(14px)',
+            WebkitBackdropFilter: 'blur(14px)',
+            color: 'var(--fg)',
+          }}
+      >
       <nav
         className="
           mx-auto grid min-h-[76px] max-w-[1800px]
