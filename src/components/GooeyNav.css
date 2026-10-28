@@ -52,6 +52,8 @@
     top: 0;
     left: 0;
     pointer-events: none;
+    max-width: none !important;
+    max-height: none !important;
 }
 
 .gooey-nav__fallback {
