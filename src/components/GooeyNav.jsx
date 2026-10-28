@@ -320,16 +320,19 @@ const GooeyNav = ({
                 canvas.height = height;
             }
 
-            rects = Array.from(list.children).map(item => {
-                const rect = item.getBoundingClientRect();
 
-                return {
-                    x: rect.left - box.left,
-                    y: rect.top - box.top,
-                    w: rect.width,
-                    h: rect.height
-                };
-            });
+rects = Array.from(list.children).map(item => {
+    const link = item.querySelector('.gooey-nav__link');
+    const rect = (link || item).getBoundingClientRect();
+
+    return {
+        x: rect.left - box.left,
+        y: rect.top - box.top,
+        w: rect.width,
+        h: rect.height
+    };
+});
+
         };
 
         const trace = (boxes, blobs, smooth) => {
@@ -483,19 +486,6 @@ const render = () => {
     for (const [index, state] of pills) {
         const box = shape(index, state.scale);
 
-        if (box && index === target) {
-            console.log("Active pill:", {
-                index,
-                x: box.x,
-                y: box.y,
-                width: box.w,
-                height: box.h,
-                hoverX: hover.x,
-                hoverY: hover.y,
-                hoverW: hover.w,
-                hoverH: hover.h
-            });
-        }
 
         if (box) {
             boxes.push({
