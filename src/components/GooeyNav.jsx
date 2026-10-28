@@ -1,5 +1,5 @@
 'use client';
-
+//GooeyNav.jsx
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import './GooeyNav.css';
@@ -768,6 +768,7 @@ gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
         };
 
         const go = (index, animate) => {
+            measure();
             if (index === target) return;
             if (!rects[index] || !animate || reduced || target < 0) {
                 settle(index);
@@ -821,6 +822,9 @@ gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
         resizeObserver.observe(stage);
         resizeObserver.observe(list);
 
+        const onLoad = () => { measure(); if (!drops.length) settle(target < 0 ? indexRef.current : target); };
+        window.addEventListener('load', onLoad);
+
         list.addEventListener('pointerover', onOver);
         list.addEventListener('pointerleave', onLeave);
 
@@ -844,6 +848,7 @@ gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
             disposed = true;
             cancelAnimationFrame(raf);
             resizeObserver.disconnect();
+            window.removeEventListener('load', onLoad);
             list.removeEventListener('pointerover', onOver);
             list.removeEventListener('pointerleave', onLeave);
             if (gl && pipeline) {

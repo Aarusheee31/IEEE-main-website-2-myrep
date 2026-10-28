@@ -1,4 +1,4 @@
-
+/* GooeyNav.css */
 .gooey-nav {
     --gn-pad: 6px;
     --gn-gap: 4px;
@@ -118,7 +118,7 @@
 
 .gooey-nav__item[data-active] .gooey-nav__link {
     color: var(--gn-ink);
-    font-weight: 600;
+    /*ont-weight: 600;*/
 }
 
 .gooey-nav__link:focus-visible {
@@ -175,7 +175,7 @@
 .ieee-gooey-nav .gooey-nav__list {
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 /* Reduced motion */
