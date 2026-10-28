@@ -391,13 +391,12 @@ const GooeyNav = ({
 
             if (!rect || amount <= 0.002) return null;
 
-            const scale = Math.min(
-                1,
-                0.42 + 0.58 * Math.sqrt(Math.max(0, amount))
-            );
+            const progress = Math.min(1, Math.max(0, amount));
+
+            const scale = 0.42 + 0.58 * Math.sqrt(progress);
 
             const h = rect.h * scale;
-            const w = rect.w * Math.max(0, amount) ** 0.75;
+            const w = rect.w * Math.pow(progress, 0.75);
 
             return {
                 x: rect.x + (rect.w - w) / 2,
@@ -470,100 +469,182 @@ const GooeyNav = ({
             }
         };
 
-        const render = () => {
-            const s = settingsRef.current;
-            const height = rects[target]?.h ?? rects[0]?.h ?? 36;
-            const smooth = height * (0.18 + 0.5 * clamp01(s.gooeyness));
-            const boxes = [];
-            const blobs = [];
-            for (const [index, state] of pills) {
-                const box = shape(index, state.scale);
-                if (box) boxes.push({ cx: box.x + box.w / 2, cy: box.y + box.h / 2, hw: box.w / 2, hh: box.h / 2 });
-            }
-            for (const drop of drops) {
-                if (drop.state === 'waiting') continue;
-                const radius = 0.26 * height * drop.size * Math.min(drop.emerged, 1 - drop.absorbed);
-                if (radius <= 0.05) continue;
-                const speed = Math.hypot(drop.vx, drop.vy);
-                const length = Math.min(radius * 1.1, speed * 0.018);
-                blobs.push({
-                    x: drop.x,
-                    y: drop.y,
-                    r: radius,
-                    tx: speed > 0.01 ? (drop.vx / speed) * length : 0,
-                    ty: speed > 0.01 ? (drop.vy / speed) * length : 0,
-                    tint: drop.tint
-                });
-            }
+const render = () => {
+    const s = settingsRef.current;
+    const height = rects[target]?.h ?? rects[0]?.h ?? 36;
+    const smooth = height * (0.18 + 0.5 * clamp01(s.gooeyness));
 
-            const settledPill = boxes.length === 1 && !blobs.length;
-            if (settledPill) {
-                const box = boxes[0];
-                overlay.style.clipPath = `path('${pillPath(box.cx - box.hw, box.cy - box.hh, box.hw * 2, box.hh * 2)}')`;
-            } else {
-                overlay.style.clipPath = `path('${trace(boxes, blobs, smooth) || 'M0,0Z'}')`;
-            }
-            overlay.style.visibility = 'visible';
+    const boxes = [];
+    const blobs = [];
 
-            if (!pipeline || !gl) {
-                const box = shape(target, 1);
-                if (box) {
-                    fallback.style.transform = `translate(${box.x.toFixed(2)}px, ${box.y.toFixed(2)}px)`;
-                    fallback.style.width = `${box.w}px`;
-                    fallback.style.height = `${box.h}px`;
-                }
-                fallback.style.opacity = box ? '1' : '0';
-                return;
-            }
+    // Build the active pill shapes.
+    for (const [index, state] of pills) {
+        const box = shape(index, state.scale);
 
-            let slot = 0;
-            for (const box of boxes) {
-                if (slot >= MAX_PILLS) break;
-                pillData[slot * 4] = box.cx + MARGIN;
-                pillData[slot * 4 + 1] = box.cy + MARGIN;
-                pillData[slot * 4 + 2] = box.hw;
-                pillData[slot * 4 + 3] = box.hh;
-                slot += 1;
-            }
-            pillData.fill(0, slot * 4);
-            let count = 0;
-            for (const blob of blobs) {
-                if (count >= MAX_DROPS) break;
-                dropData[count * 4] = blob.x + MARGIN;
-                dropData[count * 4 + 1] = blob.y + MARGIN;
-                dropData[count * 4 + 2] = blob.r;
-                dropData[count * 4 + 3] = 0;
-                tailData[count * 2] = blob.tx;
-                tailData[count * 2 + 1] = blob.ty;
-                const tint = blob.tint || s.pillRgb;
-                tintData[count * 3] = tint[0];
-                tintData[count * 3 + 1] = tint[1];
-                tintData[count * 3 + 2] = tint[2];
-                count += 1;
-            }
+        if (box) {
+            boxes.push({
+                cx: box.x + box.w / 2,
+                cy: box.y + box.h / 2,
+                hw: box.w / 2,
+                hh: box.h / 2
+            });
+        }
+    }
 
-            const { program, uniforms, buffer, position } = pipeline;
-            gl.viewport(0, 0, canvas.width, canvas.height);
-            gl.clearColor(0, 0, 0, 0);
-            gl.clear(gl.COLOR_BUFFER_BIT);
-            gl.useProgram(program);
-            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-            gl.enableVertexAttribArray(position);
-            gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
-            gl.uniform2f(uniforms.uSize, view.width + MARGIN * 2, view.height + MARGIN * 2);
-            gl.uniform1f(uniforms.uRatio, canvas.width / Math.max(1, view.width + MARGIN * 2));
-            gl.uniform4fv(uniforms.uPills, pillData);
-            gl.uniform4f(uniforms.uHover, hover.x + MARGIN, hover.y + MARGIN, hover.w / 2, hover.h / 2);
-            gl.uniform4fv(uniforms.uDrops, dropData);
-            gl.uniform2fv(uniforms.uTails, tailData);
-            gl.uniform3fv(uniforms.uTints, tintData);
-            gl.uniform1i(uniforms.uCount, count);
-            gl.uniform1f(uniforms.uSmooth, smooth);
-            gl.uniform3f(uniforms.uPill, s.pillRgb[0], s.pillRgb[1], s.pillRgb[2]);
-            gl.uniform4f(uniforms.uHoverColor, s.hoverRgb[0], s.hoverRgb[1], s.hoverRgb[2], s.hoverRgb[3] * hover.alpha);
-            gl.uniform1f(uniforms.uShadow, s.shadow);
-            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-        };
+    // Preserve particle animation.
+    for (const drop of drops) {
+        if (drop.state === 'waiting') continue;
+
+        const radius =
+            0.26 * height * drop.size *
+            Math.min(drop.emerged, 1 - drop.absorbed);
+
+        if (radius <= 0.05) continue;
+
+        const speed = Math.hypot(drop.vx, drop.vy);
+        const length = Math.min(radius * 1.1, speed * 0.018);
+
+        blobs.push({
+            x: drop.x,
+            y: drop.y,
+            r: radius,
+            tx: speed > 0.01 ? (drop.vx / speed) * length : 0,
+            ty: speed > 0.01 ? (drop.vy / speed) * length : 0,
+            tint: drop.tint
+        });
+    }
+
+    // Keep the active text overlay aligned with the pill shape.
+    const settledPill = boxes.length === 1 && !blobs.length;
+
+    if (settledPill) {
+        const box = boxes[0];
+
+        overlay.style.clipPath = `path('${pillPath(
+        box.cx - box.hw,
+        box.cy - box.hh,
+        box.hw * 2,
+        box.hh * 2
+    )}')`;
+} else {
+    overlay.style.clipPath = `path('${trace(boxes, blobs, smooth) || 'M0,0Z'}')`;
+}
+
+overlay.style.visibility = 'visible';
+
+// Fallback for browsers without WebGL2.
+if (!pipeline || !gl) {
+    const box = shape(target, 1);
+
+    if (box) {
+        fallback.style.transform =
+            `translate(${box.x.toFixed(2)}px, ${box.y.toFixed(2)}px)`;
+
+        fallback.style.width = `${box.w}px`;
+        fallback.style.height = `${box.h}px`;
+    }
+
+    fallback.style.opacity = box ? '1' : '0';
+    return;
+}
+
+// Upload active pill coordinates to WebGL.
+let slot = 0;
+
+for (const box of boxes) {
+    if (slot >= MAX_PILLS) break;
+
+    pillData[slot * 4] = box.cx + MARGIN;
+    pillData[slot * 4 + 1] = box.cy + MARGIN;
+    pillData[slot * 4 + 2] = box.hw;
+    pillData[slot * 4 + 3] = box.hh;
+
+    slot++;
+}
+
+pillData.fill(0, slot * 4);
+
+// Upload particle coordinates.
+let count = 0;
+
+for (const blob of blobs) {
+    if (count >= MAX_DROPS) break;
+
+    dropData[count * 4] = blob.x + MARGIN;
+    dropData[count * 4 + 1] = blob.y + MARGIN;
+    dropData[count * 4 + 2] = blob.r;
+    dropData[count * 4 + 3] = 0;
+
+    tailData[count * 2] = blob.tx;
+    tailData[count * 2 + 1] = blob.ty;
+
+    const tint = blob.tint || s.pillRgb;
+
+    tintData[count * 3] = tint[0];
+    tintData[count * 3 + 1] = tint[1];
+    tintData[count * 3 + 2] = tint[2];
+
+    count++;
+}
+
+// Render WebGL canvas.
+const { program, uniforms, buffer, position } = pipeline;
+
+gl.viewport(0, 0, canvas.width, canvas.height);
+gl.clearColor(0, 0, 0, 0);
+gl.clear(gl.COLOR_BUFFER_BIT);
+
+gl.useProgram(program);
+gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+gl.enableVertexAttribArray(position);
+gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+
+gl.uniform2f(
+    uniforms.uSize,
+    view.width + MARGIN * 2,
+    view.height + MARGIN * 2
+);
+
+gl.uniform1f(
+    uniforms.uRatio,
+    canvas.width / Math.max(1, view.width + MARGIN * 2)
+);
+
+gl.uniform4fv(uniforms.uPills, pillData);
+gl.uniform4f(
+    uniforms.uHover,
+    hover.x + MARGIN,
+    hover.y + MARGIN,
+    hover.w / 2,
+    hover.h / 2
+);
+
+gl.uniform4fv(uniforms.uDrops, dropData);
+gl.uniform2fv(uniforms.uTails, tailData);
+gl.uniform3fv(uniforms.uTints, tintData);
+gl.uniform1i(uniforms.uCount, count);
+gl.uniform1f(uniforms.uSmooth, smooth);
+
+gl.uniform3f(
+    uniforms.uPill,
+    s.pillRgb[0],
+    s.pillRgb[1],
+    s.pillRgb[2]
+);
+
+gl.uniform4f(
+    uniforms.uHoverColor,
+    s.hoverRgb[0],
+    s.hoverRgb[1],
+    s.hoverRgb[2],
+    s.hoverRgb[3] * hover.alpha
+);
+
+gl.uniform1f(uniforms.uShadow, s.shadow);
+
+gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+};
+
 
         const frame = now => {
             raf = 0;
