@@ -1,3 +1,4 @@
+//hero.jsx
 import Navbar from './Navbar';
 import CrystalizedBall from './CrystalizedBall';
 import GhostCursor from './GhostCursor';

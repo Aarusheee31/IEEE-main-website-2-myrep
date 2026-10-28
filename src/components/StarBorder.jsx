@@ -1,5 +1,5 @@
 'use client';
-
+/*StarBorder.jsx*/
 import { useEffect, useRef } from 'react';
 
 import './StarBorder.css';

@@ -1,4 +1,7 @@
+/*StarBorder.css*/
+
 .star-border {
+
     position: relative;
     isolation: isolate;
     display: inline-flex;
@@ -51,4 +54,9 @@ a.star-border {
 .star-border:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+}
+
+.star-border__light {
+    max-width: none !important;
+    max-height: none !important;
 }
