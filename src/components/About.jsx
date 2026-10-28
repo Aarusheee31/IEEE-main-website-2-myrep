@@ -1,5 +1,4 @@
 
-import MicroSlats from './MicroSlats';
 import ScrollFloat from './ScrollFloat';
 const stats = [
   { value: '200', suffix: '+', label: 'ACTIVE MEMBERS' },
@@ -9,34 +8,11 @@ const stats = [
 
 export default function About() {
   return (
-      <section
-          id="about"
-          className="relative isolate overflow-hidden bg-bg text-fg"
-      >
-        <MicroSlats
-            preset="tide"
-            color="#476998"
-            glintColor="#B2B39D"
-            backgroundColor="#043473"
-            slatWidth={12}
-            slatHeight={28}
-            gap={4}
-            roundness={0.7}
-            speed={0.22}
-            scale={1.3}
-            direction={250}
-            chop={0.2}
-            stretch={0.08}
-            glint={0.18}
-            contrast={0.85}
-            perspective={0.45}
-            fog={0.8}
-            interactive={false}
-            intro
-            introDuration={1.8}
-            className="micro-slats-layer"
-        />
-        <div className="relative z-10 mx-auto max-w-[1800px] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-28">
+    <section
+      id="about"
+      className="relative overflow-hidden bg-bg text-fg"
+    >
+      <div className="mx-auto max-w-[1800px] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-28">
 
         {/* Top divider */}
         <div className="mb-16 h-px w-full bg-white/20 sm:mb-20" />
