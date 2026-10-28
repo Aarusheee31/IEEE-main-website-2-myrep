@@ -386,25 +386,27 @@ const GooeyNav = ({
             return pills.get(index);
         };
 
-        const shape = (index, amount) => {
-            const rect = rects[index];
 
-            if (!rect || amount <= 0.002) return null;
+const shape = (index, amount) => {
+    const rect = rects[index];
 
-            const progress = Math.min(1, Math.max(0, amount));
+    if (!rect || amount <= 0.002) return null;
 
-            const scale = 0.42 + 0.58 * Math.sqrt(progress);
+    const progress = Math.min(1, Math.max(0, amount));
 
-            const h = rect.h * scale;
-            const w = rect.w * Math.pow(progress, 0.75);
+    const scale = 0.42 + 0.58 * Math.sqrt(progress);
 
-            return {
-                x: rect.x + (rect.w - w) / 2,
-                y: rect.y + (rect.h - h) / 2,
-                w,
-                h
-            };
-        };
+    const w = rect.w * progress ** 0.75;
+    const h = rect.h * scale;
+
+    return {
+        x: rect.x + (rect.w - w) / 2,
+        y: rect.y + (rect.h - h) / 2,
+        w,
+        h
+    };
+};
+
 
         const plan = (drop, index, now, fresh) => {
             const s = settingsRef.current;
@@ -480,6 +482,20 @@ const render = () => {
     // Build the active pill shapes.
     for (const [index, state] of pills) {
         const box = shape(index, state.scale);
+
+        if (box && index === target) {
+            console.log("Active pill:", {
+                index,
+                x: box.x,
+                y: box.y,
+                width: box.w,
+                height: box.h,
+                hoverX: hover.x,
+                hoverY: hover.y,
+                hoverW: hover.w,
+                hoverH: hover.h
+            });
+        }
 
         if (box) {
             boxes.push({
