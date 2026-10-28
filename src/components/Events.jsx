@@ -12,9 +12,9 @@ const events = [
     description:
         'VIBE-A-THON was an offline app development challenge organized by IEEE IGDTUW on 16th February, where participants designed and developed a functional digital platform for IEEE IGDTUW within a day. The event emphasized practical problem-solving, real-world development, and deployment, allowing participants to leverage AI tools with proper disclosure. The winning solution earned recognition, exciting goodies, and the opportunity to become the official IEEE IGDTUW application.',
     images: [
-      '/Events/Images/Ev 1.1.jpg',
-      '/Events/Images/Ev 1.2.jpg',
-      '/Events/Images/Ev 1.3.jpeg',
+      '/Events/Imagess/Ev 1.1.jpeg',
+      '/Events/Imagess/Ev 1.2.jpeg',
+      '/Events/Imagess/Ev 1.3.jpeg',
     ],
     type: 'App Development Challenge',
   },
@@ -28,9 +28,9 @@ const events = [
     description:
         'WIEgnite 3.0 brought together brilliant minds to showcase innovative ideas, creative prototypes, and impactful solutions, fostering a spirit of collaboration, technical excellence, and innovation. The event concluded with an award ceremony recognizing the outstanding teams for their exceptional ideas and execution.',
     images: [
-      '/Events/Images/Ev 2.1.jpg',
-      '/Events/Images/Ev 2.2.jpeg',
-      '/Events/Images/Ev 2.3.jpeg',
+      '/Events/Imagess/Ev 2.1.jpeg',
+      '/Events/Imagess/Ev 2.2.jpeg',
+      '/Events/Imagess/Ev 2.3.jpeg',
     ],
     type: 'Innovation Event',
   },
@@ -44,9 +44,9 @@ const events = [
     description:
         'As part of WIEmPower Week 7.0, IEEE IGDTUW organized Mastering Cybersecurity: A Hands-On Workshop on 14th February 2026, featuring Dr. Vandana Sharma, a cybersecurity and forensics expert. The session introduced participants to real-world cyber defense techniques, threat detection, and system security, helping them strengthen their understanding of cybersecurity and develop practical skills.',
     images: [
-      '/Events/Images/Ev 3.1.jpeg',
-      '/Events/Images/Ev 3.2.jpeg',
-      '/Events/Images/Ev 3.3.jpeg',
+      '/Events/Imagess/Ev 3.1.jpeg',
+      '/Events/Imagess/Ev 3.2.jpeg',
+      '/Events/Imagess/Ev 3.3.jpeg',
     ],
     type: 'Technical Workshop',
   },
@@ -59,7 +59,7 @@ const events = [
     year: '2026',
     description:
         'IEEE IGDTUW organized Navigating Your Career in the AI Era, an insightful session led by Kushal Vijay on 17th February 2026. The session explored the evolving role of artificial intelligence in shaping career opportunities, emphasizing the importance of adaptability, continuous learning, and developing relevant skills to thrive in an AI-driven world.',
-    images: ['/Events/Images/Ev 4.jpeg'],
+    images: ['/Events/Imagess/Ev 4.jpeg'],
     type: 'Expert Session',
   },
   {
@@ -72,9 +72,9 @@ const events = [
     description:
         'On October 1st, 2024, IEEE IGDTUW welcomed Harkirat Singh, an open-source enthusiast and IIT Roorkee graduate, to share his experiences. A software engineer who has worked at FAANG, finance, and startup companies, Harkirat captivated the audience with his unique journey in the world of coding. His session provided valuable insights into open-source projects and career growth.',
     images: [
-      '/Events/Images/Ev 5.1.jpg',
-      '/Events/Images/Ev 5.2.jpg',
-      '/Events/Images/Ev 5.3.jpg',
+      '/Events/Imagess/Ev 5.1.jpeg',
+      '/Events/Imagess/Ev 5.2.jpeg',
+      '/Events/Imagess/Ev 5.3.jpeg',
     ],
     type: 'Expert Session',
   },
@@ -88,9 +88,9 @@ const events = [
     description:
         'On September 11th, 2024, IEEE IGDTUW had the honor of hosting Aisha Bowe, a former NASA rocket scientist, entrepreneur, and CEO of STEMBoard. As the first Black woman to break barriers in space tech, Aisha shared her journey, inspiring women to pursue careers in technology. Her story of determination and leadership left the audience empowered to reach for the stars.',
     images: [
-      '/Events/Images/Ev 6.1.jpg',
-      '/Events/Images/Ev 6.2.jpg',
-      '/Events/Images/Ev 6.3.jpg',
+      '/Events/Imagess/Ev 6.1.jpeg',
+      '/Events/Imagess/Ev 6.2.jpeg',
+      '/Events/Imagess/Ev 6.3.jpeg',
     ],
     type: 'Guest Session',
   },
@@ -104,9 +104,9 @@ const events = [
     description:
         "On February 8th–9th, 2024, IEEE IGDTUW successfully conducted the Quadcopter: The Drone Workshop, where participants delved into the exciting world of drone technology. Attendees assembled and piloted drones, gaining hands-on experience and insights into aerial innovation, making it a memorable event for all tech enthusiasts.",
     images: [
-      '/Events/Images/Ev 7.1.jpg',
-      '/Events/Images/Ev 7.2.jpg',
-      '/Events/Images/Ev 7.3.jpg',
+      '/Events/Imagess/Ev 7.1.jpeg',
+      '/Events/Imagess/Ev 7.2.jpeg',
+      '/Events/Imagess/Ev 7.3.jpeg',
     ],
     type: 'Hands-on Technical Workshop',
   },
