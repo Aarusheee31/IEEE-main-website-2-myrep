@@ -58,22 +58,22 @@ export default function Navbar() {
         {/* CENTER: Gooey Navigation */}
         <div className="hidden items-center justify-self-center md:flex">
           <GooeyNav
-            items={navLinks}
-            initialActiveIndex={0}
-            theme={theme}
-            color={isDark ? '#043473' : '#D7D6AE'}
-            activeTextColor={isDark ? '#D7D6AE' : '#043473'}
-            colors={['#476998', '#28518A', '#043473']}
-            size="md"
-            frame
-            animationTime={600}
-            particleCount={15}
-            timeVariance={300}
-            spread={56}
-            gooeyness={0.5}
-            wobble={0.5}
-            hoverEffect
-            className="ieee-gooey-nav"
+              items={navLinks}
+              initialActiveIndex={0}
+              theme={theme}
+              color={isDark ? '#043473' : '#D7D6AE'}
+              activeTextColor={isDark ? '#D7D6AE' : '#043473'}
+              colors={['#476998', '#28518A', '#043473']}
+              size="md"
+              frame={false}
+              animationTime={600}
+              particleCount={15}
+              timeVariance={300}
+              spread={56}
+              gooeyness={0.5}
+              wobble={0.5}
+              hoverEffect
+              className="ieee-gooey-nav"
           />
         </div>
 

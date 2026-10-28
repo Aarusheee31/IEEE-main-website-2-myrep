@@ -298,25 +298,37 @@ const GooeyNav = ({
         const measure = () => {
             const box = stage.getBoundingClientRect();
             const ratio = Math.min(window.devicePixelRatio || 1, 2);
+
             view.width = box.width;
             view.height = box.height;
+
             const outerWidth = box.width + MARGIN * 2;
             const outerHeight = box.height + MARGIN * 2;
+
             Object.assign(canvas.style, {
                 left: `${-MARGIN}px`,
                 top: `${-MARGIN}px`,
                 width: `${outerWidth}px`,
                 height: `${outerHeight}px`
             });
+
             const width = Math.max(1, Math.round(outerWidth * ratio));
             const height = Math.max(1, Math.round(outerHeight * ratio));
+
             if (canvas.width !== width || canvas.height !== height) {
                 canvas.width = width;
                 canvas.height = height;
             }
+
             rects = Array.from(list.children).map(item => {
                 const rect = item.getBoundingClientRect();
-                return { x: rect.left - box.left, y: rect.top - box.top, w: rect.width, h: rect.height };
+
+                return {
+                    x: rect.left - box.left,
+                    y: rect.top - box.top,
+                    w: rect.width,
+                    h: rect.height
+                };
             });
         };
 
@@ -646,10 +658,12 @@ const GooeyNav = ({
             pills.clear();
             drops.length = 0;
             target = index;
+
             const state = pill(index);
             state.mass = 1;
             state.scale = 1;
             state.velocity = 0;
+
             render();
         };
 
