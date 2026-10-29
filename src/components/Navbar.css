@@ -155,3 +155,9 @@ display: inline-flex;
         box-sizing: border-box;
     }
 }
+/* Desktop: menu button nahi chahiye, sirf theme toggle */
+@media (min-width: 1024px) {
+    .ieee-navbar .ieee-tube--actions .ieee-menu-btn {
+        display: none !important;
+    }
+}

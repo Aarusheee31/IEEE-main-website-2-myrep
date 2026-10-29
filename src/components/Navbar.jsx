@@ -149,7 +149,7 @@ export default function Navbar() {
                         onClick={() => setMenuOpen((open) => !open)}
                         aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                         aria-expanded={menuOpen}
-                        className="ieee-menu-btn lg:hidden"
+                        className="ieee-menu-btn"
                     >
                         {menuOpen ? 'CLOSE ×' : 'MENU ☰'}
                     </button>
