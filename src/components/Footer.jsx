@@ -1,8 +1,74 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import './Footer.css'
+
+const LINKEDIN_URL = 'https://www.linkedin.com/company/ieee-igdtuw/'
+const INSTAGRAM_URL = 'https://www.instagram.com/ieeeigdtuw'
+const CONTACT_EMAIL = 'igdtuwieee@gmail.com'
+
+const iconProps = {
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.7,
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
+  'aria-hidden': true,
+}
+
+const LinkedInIcon = () => (
+  <svg {...iconProps}>
+    <rect x="3" y="3" width="18" height="18" rx="4" />
+    <path d="M8 10.5V16M12 16v-3a2.2 2.2 0 0 1 4.4 0V16M12 10.5V16" />
+    <circle cx="8" cy="7.6" r="0.6" fill="currentColor" />
+  </svg>
+)
+
+const InstagramIcon = () => (
+  <svg {...iconProps}>
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.3" cy="6.7" r="0.7" fill="currentColor" />
+  </svg>
+)
+
+const MailIcon = () => (
+  <svg {...iconProps}>
+    <rect x="3" y="5" width="18" height="14" rx="3" />
+    <path d="m4 7.5 8 6 8-6" />
+  </svg>
+)
+
+const socials = [
+  { label: 'LinkedIn', href: LINKEDIN_URL, Icon: LinkedInIcon, external: true },
+  { label: 'Instagram', href: INSTAGRAM_URL, Icon: InstagramIcon, external: true },
+  { label: 'Email', href: `mailto:${CONTACT_EMAIL}`, Icon: MailIcon, external: false },
+]
 
 export default function Footer() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const footerRef = useRef(null)
+  const [revealed, setRevealed] = useState(false)
+
+  useEffect(() => {
+    const node = footerRef.current
+    if (!node) return
+    if (typeof IntersectionObserver === 'undefined') {
+      setRevealed(true)
+      return
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setRevealed(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.2 }
+    )
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
 
   const handleSubscribe = (e) => {
     e.preventDefault()
@@ -110,92 +176,93 @@ export default function Footer() {
         </div>
       </section>
 
-      {/* BLACK FOOTER */}
-      <footer className="bg-ink text-[#f5f2e9]">
-        <div className="mx-auto max-w-[1800px] px-6 sm:px-10 lg:px-16">
+      {/* FOOTER */}
+      <footer
+        ref={footerRef}
+        className={`ieee-footer${revealed ? ' is-visible' : ''}`}
+      >
+        <div className="ieee-footer__inner">
 
-          {/* Main footer row */}
-          <div className="grid grid-cols-1 gap-10 py-12 sm:grid-cols-2 sm:items-center lg:grid-cols-3 lg:py-16">
+          <div className="ieee-footer__grid">
 
-            {/* Brand */}
-            <a
-              href="#home"
-              className="flex w-fit items-center gap-3"
-              aria-label="IEEE IGDTUW home"
-            >
-              <span className="flex h-8 items-center bg-[#f5f2e9] px-2 text-xs font-bold text-black">
-                IEEE
-              </span>
+            {/* Brand + tagline */}
+            <div className="ieee-footer__col ieee-footer__brand">
+              <a
+                href="#home"
+                className="ieee-footer__logo"
+                aria-label="IEEE IGDTUW home"
+              >
+                {/* Logo PNG used as a mask so it can take the footer's colour */}
+                <span
+                  className="ieee-footer__logo-mark"
+                  aria-hidden="true"
+                  style={{
+                    '--logo-url': `url(${import.meta.env.BASE_URL}ieee-logo.png)`,
+                  }}
+                />
+              </a>
 
-              <span className="text-2xl font-bold tracking-[-0.06em] sm:text-3xl">
-                IGDTUW<span className="text-accent-text">.</span>
-              </span>
-            </a>
-
-            {/* Description */}
-            <div className="text-sm leading-6 text-white/55 lg:justify-self-center">
-              <p>Advancing technology for humanity.</p>
-              <p>New Delhi, India · Est. 2004</p>
+              <p className="ieee-footer__tagline">
+                Advancing technology for humanity, powered by women who
+                engineer the future.
+              </p>
             </div>
 
-            {/* Social links */}
-            <div className="flex flex-wrap items-center gap-6 text-xs font-semibold tracking-wider sm:justify-end">
+            {/* Contact */}
+            <div className="ieee-footer__col ieee-footer__contact">
+              <h3 className="ieee-footer__label">Contact us</h3>
 
               <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                className="text-white/80 transition hover:text-accent-text"
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="ieee-footer__mail"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  className="h-6 w-6"
-                  aria-hidden="true"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
-                </svg>
+                {CONTACT_EMAIL}
+                <span className="ieee-footer__arrow" aria-hidden="true">↗</span>
               </a>
 
-              <a
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="text-white/80 transition hover:text-accent-text"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-6 w-6"
-                  aria-hidden="true"
-                >
-                  <path d="M5.2 3.5a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4ZM3.3 9.5h3.8V21H3.3V9.5Zm6.1 0H13v1.6h.1a4.1 4.1 0 0 1 3.7-2c4 0 4.8 2.5 4.8 5.8V21h-3.8v-5.4c0-1.3 0-3.1-1.9-3.1s-2.2 1.5-2.2 3V21H9.4V9.5Z" />
-                </svg>
-              </a>
+              <address className="ieee-footer__address">
+                Kashmere Gate,
+                <br />
+                Delhi 110006
+              </address>
+            </div>
 
-              <a
-                href="mailto:ieee@igdtuw.ac.in"
-                className="group flex items-center gap-2 transition hover:text-accent-text"
-              >
-                EMAIL US
-                <span className="text-lg transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                  ↗
-                </span>
-              </a>
+            {/* Social */}
+            <div className="ieee-footer__col ieee-footer__social">
+              <h3 className="ieee-footer__label">Follow us</h3>
+
+              <ul className="ieee-footer__tube">
+                {socials.map(({ label, href, Icon, external }) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      aria-label={label}
+                      title={label}
+                      className="ieee-footer__icon"
+                      {...(external
+                        ? { target: '_blank', rel: 'noreferrer noopener' }
+                        : {})}
+                    >
+                      <Icon />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
+          <div className="ieee-footer__rule" />
+
           {/* Copyright */}
-          <div className="flex flex-col gap-3 border-t border-white/20 py-6 text-xs tracking-wide text-white/45 sm:flex-row sm:items-center">
+          <div className="ieee-footer__legal">
             <p>© {new Date().getFullYear()} IEEE IGDTUW</p>
-            <span className="hidden sm:inline">·</span>
+            <span aria-hidden="true">·</span>
             <p>Made with intent</p>
+
+            <a href="#home" className="ieee-footer__top">
+              BACK TO TOP
+              <span className="ieee-footer__arrow" aria-hidden="true">↑</span>
+            </a>
           </div>
 
         </div>
