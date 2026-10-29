@@ -363,7 +363,7 @@ export default function People() {
   return (
     <section
       id="team"
-      className="overflow-hidden bg-bg-alt text-fg"
+      className="overflow-hidden bg-[#B2B39D] text-[#043473] dark:bg-[#28518A] dark:text-[#E4D076]"
     >
       <div className="mx-auto max-w-[1800px] px-6 py-20 sm:px-10 sm:py-24 lg:px-16 lg:py-28">
 
@@ -381,12 +381,19 @@ export default function People() {
           {/* Main heading */}
           <div className="lg:col-span-6">
             <h2 className="text-[clamp(3.5rem,8vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.075em]">
-              Good ideas
-              <span className="block">need</span>
-              <span className="block" style={{ color: 'var(--highlight)' }}>
+              <span className="block text-[#043473] dark:text-[#E4D076]">
+                Good ideas
+              </span>
+
+              <span className="block text-[#043473] dark:text-[#E4D076]">
+                need
+              </span>
+
+              <span className="block text-[#28518A] dark:text-[#D7D6AE]">
                 good
               </span>
-              <span className="block" style={{ color: 'var(--highlight)' }}>
+
+              <span className="block text-[#28518A] dark:text-[#D7D6AE]">
                 company.
               </span>
             </h2>
@@ -402,10 +409,7 @@ export default function People() {
                 Meet the Senior Execom team making space for possibility — one
                 chapter at a time.
               </p>
-              <p
-                className="mt-3 text-xs font-bold tracking-[0.16em]"
-                style={{ color: 'var(--highlight)' }}
-              >
+              <p className="mt-3 text-xs font-bold tracking-[0.16em] text-[#28518A] dark:text-[#E4D076]">
                 2026–2027
               </p>
             </div>
@@ -420,7 +424,7 @@ export default function People() {
           >
             <span
               className="h-px w-6"
-              style={{ backgroundColor: 'var(--highlight)' }}
+              style={{ backgroundColor: 'var(--secondary)' }}
             />
             <p className="text-[10px] font-semibold tracking-[0.2em]" style={{ color: 'var(--fg-muted)' }}>
               LEADERSHIP
