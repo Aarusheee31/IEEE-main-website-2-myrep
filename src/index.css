@@ -1,0 +1,443 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================
+   IEEE IGDTUW — BRAND COLOUR PALETTE
+========================================== */
+
+:root {
+    color-scheme: light;
+
+    --palette-sage: #B2B39D;
+    --palette-queen-blue: #476998;
+    --palette-blue-nude: #28518A;
+    --palette-konjo: #043473;
+    --palette-grey: #8B9091;
+    --palette-green-mesh: #D7D6AE;
+    --palette-papaya: #E4D076;
+
+    /* Light theme */
+    --bg: #D7D6AE;
+    --bg-alt: #B2B39D;
+    --surface: #D7D6AE;
+    --surface-hover: #B2B39D;
+
+    --fg: #043473;
+    --fg-muted: #28518A;
+    --heading: #043473;
+
+    --accent: #28518A;
+    --accent-hover: #043473;
+    --accent-text: #D7D6AE;
+
+    --secondary: #476998;
+    --ink: #043473;
+    --highlight: #E4D076;
+
+    --border: #B2B39D;
+    --card-shadow: 0 12px 35px rgba(4, 52, 115, 0.16);
+    --glow: rgba(71, 105, 152, 0.25);
+}
+
+/* ==========================================
+   DARK THEME
+========================================== */
+
+.dark {
+    color-scheme: dark;
+
+    --bg: #043473;
+    --bg-alt: #28518A;
+    --surface: #28518A;
+    --surface-hover: #476998;
+
+    --fg: #D7D6AE;
+    --fg-muted: #D7D6AE;
+    --heading: #E4D076;
+
+    --accent: #476998;
+    --accent-hover: #28518A;
+    --accent-text: #E4D076;
+
+    --secondary: #B2B39D;
+    --ink: #D7D6AE;
+    --highlight: #E4D076;
+
+    --border: #476998;
+    --card-shadow: 0 14px 40px rgba(4, 52, 115, 0.4);
+    --glow: rgba(228, 208, 118, 0.2);
+}
+
+/* ==========================================
+   TAILWIND COLOUR VARIABLES
+========================================== */
+
+@theme inline {
+    --color-bg: var(--bg);
+    --color-bg-alt: var(--bg-alt);
+    --color-surface: var(--surface);
+    --color-surface-hover: var(--surface-hover);
+
+    --color-fg: var(--fg);
+    --color-fg-muted: var(--fg-muted);
+    --color-heading: var(--heading);
+
+    --color-accent: var(--accent);
+    --color-accent-hover: var(--accent-hover);
+    --color-accent-text: var(--accent-text);
+
+    --color-secondary: var(--secondary);
+    --color-ink: var(--ink);
+    --color-highlight: var(--highlight);
+    --color-border: var(--border);
+
+    --color-sage: var(--palette-sage);
+    --color-queen-blue: var(--palette-queen-blue);
+    --color-blue-nude: var(--palette-blue-nude);
+    --color-konjo: var(--palette-konjo);
+    --color-palette-grey: var(--palette-grey);
+    --color-green-mesh: var(--palette-green-mesh);
+    --color-papaya: var(--palette-papaya);
+
+    --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+/* ==========================================
+   GLOBAL RESET
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+
+    background-color: var(--bg);
+    color: var(--fg);
+
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    transition:
+            background-color 0.35s ease,
+            color 0.35s ease;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+/* ==========================================
+   TYPOGRAPHY
+========================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--heading);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    text-wrap: balance;
+}
+
+p {
+    color: var(--fg-muted);
+}
+
+strong {
+    color: var(--heading);
+}
+
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+}
+
+img {
+    display: block;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* ==========================================
+   LINKS
+========================================== */
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+
+    transition:
+            color 0.25s ease,
+            opacity 0.25s ease;
+}
+
+a:hover {
+    color: var(--secondary);
+}
+
+/* ==========================================
+   REUSABLE CARDS
+========================================== */
+
+.card {
+    background-color: var(--surface);
+    color: var(--fg);
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    box-shadow: var(--card-shadow);
+
+    transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease,
+            background-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: var(--secondary);
+    box-shadow: 0 16px 40px var(--glow);
+}
+
+/* ==========================================
+   FORMS
+========================================== */
+
+input,
+textarea,
+select {
+    background-color: var(--surface);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--fg-muted);
+}
+
+/* ==========================================
+   SELECTION & FOCUS
+========================================== */
+
+::selection {
+    background-color: var(--palette-queen-blue);
+    color: var(--palette-green-mesh);
+}
+
+:focus-visible {
+    outline: 2px solid var(--palette-papaya);
+    outline-offset: 4px;
+}
+
+/* ==========================================
+   CRYSTAL-INSPIRED HERO ORB
+========================================== */
+
+.crystal-orb-wrap {
+    position: absolute;
+    inset: 0 0 0 auto;
+
+    width: min(58vw, 850px);
+
+    display: grid;
+    place-items: center;
+
+    pointer-events: none;
+}
+
+.crystal-orb {
+    position: relative;
+
+    width: clamp(260px, 39vw, 620px);
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    background:
+            radial-gradient(
+                    circle at 32% 24%,
+                    var(--palette-papaya) 0%,
+                    var(--palette-sage) 12%,
+                    var(--palette-queen-blue) 30%,
+                    var(--palette-blue-nude) 52%,
+                    var(--palette-konjo) 78%
+            );
+
+    box-shadow:
+            inset -28px -25px 65px rgba(4, 52, 115, 0.7),
+            inset 18px 12px 50px rgba(228, 208, 118, 0.35),
+            0 0 90px var(--glow);
+
+    animation: orb-float 8s ease-in-out infinite;
+}
+
+.crystal-orb::before,
+.crystal-orb::after {
+    content: "";
+
+    position: absolute;
+    inset: 9%;
+
+    border: 1px solid var(--palette-papaya);
+    border-radius: 44% 56% 58% 42% / 44% 40% 60% 56%;
+
+    opacity: 0.75;
+
+    transform: rotate(28deg);
+
+    box-shadow:
+            0 0 24px var(--glow),
+            inset 0 0 35px rgba(215, 214, 174, 0.2);
+}
+
+.crystal-orb::after {
+    inset: 18% 4%;
+    transform: rotate(-38deg);
+    border-color: var(--palette-green-mesh);
+    opacity: 0.65;
+}
+
+.orb-shine {
+    position: absolute;
+
+    inset: 8% 12% auto auto;
+
+    width: 34%;
+    height: 24%;
+
+    border-radius: 50%;
+
+    background-color: var(--palette-papaya);
+    opacity: 0.55;
+
+    filter: blur(30px);
+}
+
+@keyframes orb-float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+
+    50% {
+        transform: translateY(-18px) rotate(4deg);
+    }
+}
+
+/* ==========================================
+   THEME SUPPORT FOR EXISTING COMPONENTS
+========================================== */
+
+/* Preserve theme-aware text */
+.text-black\/40,
+.text-black\/45,
+.text-black\/50,
+.text-black\/55,
+.text-black\/60 {
+    color: var(--fg-muted) !important;
+}
+
+.text-white\/40,
+.text-white\/45,
+.text-white\/50,
+.text-white\/55,
+.text-white\/65,
+.text-white\/70,
+.text-white\/75,
+.text-white\/80 {
+    color: var(--fg-muted) !important;
+}
+
+/* Theme-aware borders */
+.border-black\/15,
+.border-black\/40,
+.border-white\/20,
+.border-white\/25,
+.border-white\/35,
+.border-white\/50,
+.border-white\/60,
+.border-white\/75 {
+    border-color: var(--border) !important;
+}
+
+/* Replace pure-white surfaces in existing sections */
+.bg-white {
+    background-color: var(--surface) !important;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 767px) {
+    html {
+        scroll-padding-top: 72px;
+    }
+
+    .crystal-orb-wrap {
+        width: 100%;
+        inset: 18% 0 auto;
+        opacity: 0.46;
+    }
+
+    .crystal-orb {
+        width: min(72vw, 430px);
+    }
+}
+
+/* ==========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+section[id], footer[id] {
+    scroll-margin-top: 90px;
+}
