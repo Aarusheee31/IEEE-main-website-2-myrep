@@ -251,15 +251,17 @@ export default function Events() {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-3">
               <p className="pt-2 text-xs font-semibold tracking-[0.22em] text-black/50">
-                <span className="mr-3 text-[#476998]">02</span>
+                <span className="mr-3 text-[#476998] dark:text-[#E4D076]">02</span>
                 OUR JOURNEY
               </p>
             </div>
 
             <div className="lg:col-span-6">
               <h2 className="text-[clamp(3.5rem,8vw,7.5rem)] font-bold leading-[0.88] tracking-[-0.07em]">
-                Moments
-                <span className="block text-[#476998]">
+              <span className="block text-[#043473] dark:text-[#E4D076]">
+                  Moments
+              </span>
+                <span className="block text-[#476998] dark:text-[#D7D6AE]">
                   that matter.
                 </span>
               </h2>

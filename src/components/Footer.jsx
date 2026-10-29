@@ -80,7 +80,8 @@ export default function Footer() {
                     placeholder="your@email.com"
                     aria-label="Your email address"
                     required
-                    className="min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-white/70 focus:placeholder:text-white/40"
+                    style={{ backgroundColor: 'var(--bg-alt)' }}
+                    className="min-w-0 flex-1 rounded-lg border-0 px-3 py-1.5 text-center text-sm text-[var(--fg)] outline-none placeholder:text-[var(--fg-muted)]/70 focus:placeholder:text-[var(--fg-muted)]/40"
                   />
 
                   <button

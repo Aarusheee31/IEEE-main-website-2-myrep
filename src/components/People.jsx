@@ -72,7 +72,7 @@ export default function People() {
         </div>
 
         {/* Team member cards */}
-        <div className="mt-16 grid grid-cols-1 gap-x-6 gap-y-12 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-6">
+        <div className="mt-16 grid grid-cols-2 gap-x-3 gap-y-10 sm:mt-20 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4">
 
           {teamMembers.map((member) => (
             <article key={member.id} className="group min-w-0">
@@ -88,7 +88,7 @@ export default function People() {
                 />
 
                 {/* Number */}
-                <span className="absolute left-5 top-5 text-xs font-semibold tracking-wider text-white drop-shadow-md">
+                <span className="absolute left-3 top-3 text-xs font-semibold tracking-wider text-white drop-shadow-md sm:left-5 sm:top-5">
                   {member.id}
                 </span>
 
@@ -97,12 +97,11 @@ export default function People() {
               </div>
 
               {/* Name and role */}
-              <div className="pt-5">
-                <h3 className="text-xl font-semibold tracking-[-0.045em] sm:text-2xl">
+              <div className="pt-4 sm:pt-5">
+                <h3 className="text-base font-semibold leading-tight tracking-[-0.04em] sm:text-2xl">
                   {member.name}
                 </h3>
-
-                <p className="mt-2 text-sm leading-6 text-black/45 sm:text-base">
+                <p className="mt-1.5 text-xs leading-5 text-black/45 sm:mt-2 sm:text-base sm:leading-6">
                   {member.role}
                 </p>
               </div>

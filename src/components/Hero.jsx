@@ -70,12 +70,12 @@ export default function Hero() {
 
         {/* Crystalized Ball */}
         <div
-            className="pointer-events-auto absolute right-[-16%] top-[16%] -z-10
-                   h-[440px] w-[440px]
-                   sm:right-[-8%] sm:top-[12%] sm:h-[580px] sm:w-[580px]
-                   lg:right-[1%] lg:top-1/2 lg:h-[min(76vh,760px)] lg:w-[min(76vh,760px)]
-                   lg:-translate-y-1/2"
-            aria-hidden="true"
+          className="pointer-events-auto absolute left-1/2 top-[104px] -z-10
+               h-[210px] w-[210px] -translate-x-1/2
+               sm:left-auto sm:right-[-8%] sm:top-[12%] sm:h-[580px] sm:w-[580px] sm:translate-x-0
+               lg:right-[1%] lg:top-1/2 lg:h-[min(76vh,760px)] lg:w-[min(76vh,760px)]
+               lg:-translate-y-1/2"
+          aria-hidden="true"
         >
           <div className="h-full w-full">
             <CrystalizedBall
@@ -106,7 +106,7 @@ export default function Hero() {
         </div>
 
         {/* Hero content */}
-        <div className="mx-auto flex min-h-screen max-w-[1800px] flex-col justify-center px-6 pb-28 pt-36 sm:px-10 lg:px-16">
+       <div className="mx-auto flex min-h-screen max-w-[1800px] flex-col justify-center px-6 pb-28 pt-[21rem] sm:px-10 sm:pt-36 lg:px-16">
           {/* Eyebrow */}
           <div className="mb-8 flex items-center gap-4">
           <span
