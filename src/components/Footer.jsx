@@ -46,13 +46,13 @@ export default function Footer() {
             {/* Heading */}
             <div className="lg:col-span-7">
               <h2 className="text-[clamp(3.5rem,8vw,7.5rem)] font-semibold leading-[0.91] tracking-[-0.075em]">
-                <span className="block">The future is</span>
+                <span className="block text-[#043473] dark:text-[#E4D076]">The future is</span>
 
-                <span className="block text-ink">
+                <span className="block text-[#476998] dark:text-[#D7D6AE]">
                   under
                 </span>
 
-                <span className="block text-ink">
+                <span className="block text-[#476998] dark:text-[#D7D6AE]">
                   construction.
                 </span>
               </h2>
@@ -68,7 +68,7 @@ export default function Footer() {
                 onSubmit={handleSubscribe}
                 className="mt-10"
               >
-                <div className="flex items-center gap-4 border-b border-white/75 pb-4">
+               <div className="flex items-center gap-4 rounded-full border-2 border-[var(--heading)] px-5 py-3">
 
                   <input
                     type="email"
