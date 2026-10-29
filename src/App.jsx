@@ -4,6 +4,7 @@ import About from './components/About';
 import Events from './components/Events';
 import Chapters from './components/Chapters';
 import People from './components/People';
+import FAQ from "./components/FAQ";
 
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
@@ -21,6 +22,7 @@ function App() {
         <Events />
         <Chapters />
         <People />
+        <FAQ />
         <Footer />
       </main>
     </ThemeProvider>
