@@ -56,11 +56,12 @@ export default function About() {
             </p>
 
             <a
-              href="#team"
-              className="group mt-10 inline-flex items-center gap-5 border-b border-white/60 pb-3 text-sm font-medium tracking-wide transition hover:border-accent hover:	text-accent-text"
+              href="#people"
+              style={{ color: 'var(--heading)', borderColor: 'var(--heading)' }}
+              className="group mt-10 inline-flex items-center gap-5 border-b pb-3 text-sm font-medium tracking-wide !text-[var(--heading)] transition hover:opacity-70"
             >
               MEET THE COMMUNITY
-              <span className="text-xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+              <span className="text-xl !text-[var(--heading)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
                 ↗
               </span>
             </a>

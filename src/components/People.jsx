@@ -48,19 +48,26 @@ export default function People() {
             </p>
           </div>
 
-          {/* Main heading */}
-          <div className="lg:col-span-6">
-            <h2 className="text-[clamp(3.5rem,8vw,7.5rem)] font-semibold leading-[0.88] tracking-[-0.075em]">
+        {/* Main heading */}
+        <div className="lg:col-span-6">
+          <h2 className="text-[clamp(3.5rem,8vw,7.5rem)] font-semibold leading-[0.84] tracking-[-0.075em]">
+            <span className="block text-[#043473] dark:text-[#D7D6AE]">
               Good ideas
-              <span className="block">need</span>
-              <span className="block text-accent-text">
-                good
-              </span>
-              <span className="block text-accent-text">
-                company.
-              </span>
-            </h2>
-          </div>
+            </span>
+
+            <span className="block text-[#043473] dark:text-[#D7D6AE]">
+              need
+            </span>
+
+            <span className="block text-[#476998] dark:text-[#E4D076]">
+              good
+            </span>
+
+            <span className="block text-[#476998] dark:text-[#E4D076]">
+              company.
+            </span>
+          </h2>
+        </div>
 
           {/* Description */}
           <div className="flex items-end lg:col-span-3 lg:pb-3">
@@ -112,7 +119,7 @@ export default function People() {
         </div>
 
         {/* Bottom caption */}
-        <div className="mt-16 flex flex-col justify-between gap-3 border-t border-black/15 pt-5 text-[10px] font-medium tracking-[0.15em] text-black/40 sm:mt-20 sm:flex-row sm:text-xs">
+        <div className="mt-16 flex flex-col justify-between gap-3 border-t border-t border-[#28518A]/40 dark:border-[#D7D6AE]/25 pt-5 text-[10px] font-medium tracking-[0.15em] text-black/40 sm:mt-20 sm:flex-row sm:text-xs">
           <p>IEEE STUDENT BRANCH · IGDTUW</p>
           <p>THE PEOPLE BEHIND THE PROGRESS</p>
         </div>

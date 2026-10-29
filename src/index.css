@@ -38,6 +38,11 @@
     --border: #B2B39D;
     --card-shadow: 0 12px 35px rgba(4, 52, 115, 0.16);
     --glow: rgba(71, 105, 152, 0.25);
+
+    --chapter-hover: #28518A;
+    --chapter-hover-bg: rgba(178, 179, 157, 0.28);
+
+
 }
 
 /* ==========================================
@@ -67,6 +72,12 @@
     --border: #476998;
     --card-shadow: 0 14px 40px rgba(4, 52, 115, 0.4);
     --glow: rgba(228, 208, 118, 0.2);
+
+    --chapter-hover: #E4D076;
+    --chapter-line: rgba(215, 214, 174, 0.2);
+    --chapter-muted: rgba(215, 214, 174, 0.7);
+    --chapter-hover-bg: rgba(71, 105, 152, 0.35);
+
 }
 
 /* ==========================================
