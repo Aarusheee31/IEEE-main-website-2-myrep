@@ -9,7 +9,7 @@ const navLinks = [
     { label: 'ABOUT', href: '#about' },
     { label: 'EVENTS', href: '#events' },
     { label: 'CHAPTERS', href: '#chapters' },
-    { label: 'PEOPLE', href: '#team' },
+    { label: 'PEOPLE', href: '#people' },
     { label: 'JOIN US', href: '#join' },
 ];
 
@@ -113,7 +113,7 @@ export default function Navbar() {
                 </a>
 
                 {/* TUBE 2: Nav links */}
-                <div className="ieee-tube ieee-tube--nav hidden justify-self-center md:inline-flex">
+                <div className="ieee-tube ieee-tube--nav hidden justify-self-center lg:inline-flex">
                     <GooeyNav
                         items={navLinks}
                         activeIndex={active}
@@ -141,24 +141,27 @@ export default function Navbar() {
                     />
                 </div>
 
-                {/* TUBE 3: Theme switch + mobile menu */}
+                
+                {/* TUBE 3: Mobile menu + theme switch */}
                 <div className="ieee-tube ieee-tube--actions justify-self-end">
-                    <ThemeSwitch isDark={isDark} onClick={toggle} />
                     <button
                         type="button"
                         onClick={() => setMenuOpen((open) => !open)}
                         aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                         aria-expanded={menuOpen}
-                        className="ieee-menu-btn md:hidden"
+                        className="ieee-menu-btn"
                     >
                         {menuOpen ? 'CLOSE ×' : 'MENU ☰'}
                     </button>
+
+                    <ThemeSwitch isDark={isDark} onClick={toggle} />
                 </div>
+
             </nav>
 
             {/* Mobile menu panel */}
             {menuOpen && (
-                <div className="ieee-tube-panel md:hidden">
+                <div className="ieee-tube-panel lg:hidden">
                     <div className="flex flex-col gap-1">
                         {navLinks.map((link, index) => (
                             <a

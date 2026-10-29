@@ -251,15 +251,17 @@ export default function Events() {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-3">
               <p className="pt-2 text-xs font-semibold tracking-[0.22em] text-black/50">
-                <span className="mr-3 text-[#476998]">02</span>
+                <span className="mr-3 text-[#476998] dark:text-[#E4D076]">02</span>
                 OUR JOURNEY
               </p>
             </div>
 
             <div className="lg:col-span-6">
               <h2 className="text-[clamp(3.5rem,8vw,7.5rem)] font-bold leading-[0.88] tracking-[-0.07em]">
-                Moments
-                <span className="block text-[#476998]">
+              <span className="block text-[#043473] dark:text-[#E4D076]">
+                  Moments
+              </span>
+                <span className="block text-[#476998] dark:text-[#D7D6AE]">
                   that matter.
                 </span>
               </h2>
@@ -305,7 +307,7 @@ export default function Events() {
             />
           </div>
 
-          <div className="mt-10 flex flex-col justify-between gap-3 border-t border-black/15 pt-5 text-xs tracking-wider text-black/45 sm:flex-row">
+          <div className="mt-10 flex flex-col justify-between gap-3 border-t border-t border-[#28518A]/40 dark:border-[#D7D6AE]/25 pt-5 text-xs tracking-wider text-black/45 sm:flex-row">
             <p>IEEE STUDENT BRANCH · IGDTUW</p>
             <p>PAST EVENTS / 2024–2026</p>
           </div>

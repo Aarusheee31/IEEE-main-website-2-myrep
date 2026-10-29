@@ -70,12 +70,12 @@ export default function Hero() {
 
         {/* Crystalized Ball */}
         <div
-            className="pointer-events-auto absolute right-[-16%] top-[16%] -z-10
-                   h-[440px] w-[440px]
-                   sm:right-[-8%] sm:top-[12%] sm:h-[580px] sm:w-[580px]
-                   lg:right-[1%] lg:top-1/2 lg:h-[min(76vh,760px)] lg:w-[min(76vh,760px)]
-                   lg:-translate-y-1/2"
-            aria-hidden="true"
+          className="pointer-events-auto absolute left-1/2 top-[104px] -z-10
+               h-[210px] w-[210px] -translate-x-1/2
+               sm:left-auto sm:right-[-8%] sm:top-[12%] sm:h-[580px] sm:w-[580px] sm:translate-x-0
+               lg:right-[1%] lg:top-1/2 lg:h-[min(76vh,760px)] lg:w-[min(76vh,760px)]
+               lg:-translate-y-1/2"
+          aria-hidden="true"
         >
           <div className="h-full w-full">
             <CrystalizedBall
@@ -106,63 +106,51 @@ export default function Hero() {
         </div>
 
         {/* Hero content */}
-        <div className="mx-auto flex min-h-screen max-w-[1800px] flex-col justify-center px-6 pb-28 pt-36 sm:px-10 lg:px-16">
+       <div className="mx-auto flex min-h-screen max-w-[1800px] flex-col justify-center px-6 pb-28 pt-[21rem] sm:px-10 sm:pt-36 lg:px-16">
           {/* Eyebrow */}
           <div className="mb-8 flex items-center gap-4">
-            <span
-                className="h-3 w-3 shrink-0 rounded-full"
-                style={{
-                  backgroundColor: 'var(--highlight)',
-                  boxShadow: '0 0 22px var(--glow)',
-                }}
-            />
+          <span
+              className="h-3 w-3 shrink-0 rounded-full"
+              style={{
+                backgroundColor: 'var(--heading)',
+                boxShadow: '0 0 22px var(--glow)',
+              }}
+          />
+
             <p className="text-xs font-semibold tracking-[0.22em] text-fg-muted sm:text-sm">
               IEEE STUDENT BRANCH
-              <span className="mx-2">·</span>
+              <span className="mx-2 ">·</span>
               IGDTUW
             </p>
           </div>
 
           {/* Main heading */}
-          <h1 className="relative z-10 max-w-5xl text-[clamp(3.5rem,9vw,8.5rem)] font-black leading-[0.88] tracking-[-0.065em]">
-            Leading what
+          <h1 className="relative z-10 max-w-5xl text-[clamp(3.5rem,9vw,8.5rem)] font-black leading-[0.88] tracking-[-0.065em] text-[#043473] dark:text-[#D7D6AE]">
+            Build what
             <br />
             comes{' '}
             <span className="relative inline-block">
-              <span className="relative z-10 text-highlight">next.</span>
+              <span className="relative z-10 text-[#28518A] dark:text-[#E4D076]">
+                next.
+              </span>
+
               <span
-                  className="absolute bottom-[2%] left-0 -z-0 h-[16%] w-full opacity-50"
-                  style={{ backgroundColor: 'var(--secondary)' }}
+                className="absolute bottom-[2%] left-0 -z-0 h-[16%] w-full bg-[#28518A] opacity-50 dark:bg-[#E4D076]"
               />
             </span>
           </h1>
-
-          {/* Execom badge */}
-          <div className="mt-6 flex items-center gap-3">
-            <span
-                className="h-px w-8"
-                style={{ backgroundColor: 'var(--highlight)' }}
-            />
-            <p
-                className="text-sm font-bold tracking-[0.18em] sm:text-base"
-                style={{ color: 'var(--highlight)' }}
-            >
-              SENIOR EXECOM 2026–27
-            </p>
-          </div>
-
           {/* Description */}
-          <p className="mt-6 max-w-xl text-base leading-8 text-fg-muted sm:text-lg sm:leading-9">
-            Meet the team driving IEEE IGDTUW forward — a passionate group of
-            women engineers shaping the branch&apos;s next chapter.
+          <p className="mt-8 max-w-xl text-base leading-8 text-fg-muted sm:text-lg sm:leading-9">
+            A community of women engineers turning curiosity into capability,
+            one experiment, one conversation, and one brave idea at a time.
           </p>
 
           {/* Call-to-action buttons */}
           <div className="relative z-20 mt-9 flex flex-wrap items-center gap-4">
-            {/* Primary CTA — Meet the Team */}
+            {/* Primary CTA */}
             <StarBorder
                 as="a"
-                href="#team"
+                href="#events"
                 theme="dark"
                 color="#8B9091"
                 trailColor="#476998"
@@ -180,16 +168,17 @@ export default function Hero() {
                 clickPulse
                 className="group min-h-[60px] gap-5 px-7 text-sm font-bold tracking-wide shadow-lg transition duration-300 hover:-translate-y-1"
             >
-              MEET THE TEAM
+              EXPLORE EVENTS
+
               <span className="text-xl transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                ↗
-              </span>
+    ↗
+  </span>
             </StarBorder>
 
             {/* Secondary CTA */}
             <StarBorder
                 as="a"
-                href="#events"
+                href="#about"
                 theme="light"
                 color="#476998"
                 trailColor="#8B9091"
@@ -207,19 +196,21 @@ export default function Hero() {
                 clickPulse
                 className="group min-h-[60px] gap-5 px-7 text-sm font-bold tracking-wide transition duration-300 hover:-translate-y-1"
             >
-              EXPLORE EVENTS
+              OUR STORY
+
               <span className="text-lg transition-transform duration-300 group-hover:translate-y-1">
-                ↓
-              </span>
+    ↓
+  </span>
             </StarBorder>
           </div>
 
           {/* Brand statement */}
           <div className="mt-12 flex items-center gap-3">
-            <span
-                className="h-px w-12"
-                style={{ backgroundColor: 'var(--secondary)' }}
-            />
+          <span
+              className="h-px w-12"
+              style={{ backgroundColor: 'var(--secondary)' }}
+          />
+
             <p className="text-[10px] font-semibold tracking-[0.2em] text-fg-muted sm:text-xs">
               INNOVATE
               <span className="mx-2 text-highlight">/</span>
@@ -232,9 +223,10 @@ export default function Hero() {
 
         {/* Bottom-right indicator */}
         <div className="absolute bottom-8 right-6 z-10 hidden items-center gap-8 text-xs font-semibold text-fg-muted md:flex lg:right-16">
-          <span className="tracking-widest">
-            <span className="text-highlight">01</span> / 04
-          </span>
+        <span className="tracking-widest">
+          <span className="text-highlight">01</span> / 04
+        </span>
+
           <p className="max-w-40 text-right leading-5">
             THE NEXT GENERATION
             <br />
@@ -245,7 +237,7 @@ export default function Hero() {
         {/* Bottom accent line */}
         <div
             className="absolute bottom-0 left-0 h-1.5 w-1/3"
-            style={{ backgroundColor: 'var(--highlight)' }}
+            style={{ backgroundColor: 'var(--secondary)' }}
         />
       </section>
   );

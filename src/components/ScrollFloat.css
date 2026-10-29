@@ -10,11 +10,13 @@
 
 .scroll-float-text {
     display: inline-block;
-    font-size: clamp(1.6rem, 8vw, 10rem);
+    font-size: clamp(2.5rem, 8vw, 10rem);
     font-weight: 900;
     text-align: center;
-    line-height: 1.5;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
 }
+
 
 .scroll-float-word {
     display: inline-block;
@@ -35,4 +37,14 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+/* Phone-only heading adjustment */
+@media (max-width: 639px) {
+  .technology-heading-text {
+    font-size: clamp(3rem, 10vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.06em;
+    font-weight: 900;
+    max-width: 100%;
+  }
 }

@@ -26,7 +26,16 @@
     transition: background 0.4s, border-color 0.4s;
 }
 .ieee-tube--logo { padding: 8px 18px; }
-.ieee-tube--nav { padding: 6px; }
+.ieee-tube--nav {
+    display: none;
+    padding: 6px;
+}
+
+@media (min-width: 1024px) {
+    .ieee-tube--nav {
+        display: inline-flex;
+    }
+}
 .ieee-tube--actions { padding: 6px; gap: 8px; }
 
 /* Mobile menu panel */
@@ -43,7 +52,11 @@
 }
 
 .ieee-menu-btn {
-    padding: 7px 14px;
+display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 16px;
     border-radius: 999px;
     border: 1px solid var(--tube-edge);
     background: var(--tube-hi);
@@ -51,6 +64,7 @@
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.04em;
+    white-space: nowrap;
 }
 
 /* Theme switch */
@@ -113,3 +127,37 @@
 .theme-switch[data-dark='true']::after { opacity: 0.85; }
 
 .theme-switch:focus-visible { outline: 2px solid #476998; outline-offset: 3px; }
+
+
+/* Mobile navbar: balance both outer capsules */
+@media (max-width: 1023px) {
+    .ieee-navbar nav {
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 12px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .ieee-tube--logo {
+        padding: 8px 14px;
+        min-height: 54px;
+        justify-self: start;
+    }
+
+    .ieee-tube--logo img {
+        height: 34px;
+    }
+
+    .ieee-tube--actions {
+        justify-self: end;
+        min-height: 54px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+/* Desktop: menu button nahi chahiye, sirf theme toggle */
+@media (min-width: 1024px) {
+    .ieee-navbar .ieee-tube--actions .ieee-menu-btn {
+        display: none !important;
+    }
+}
